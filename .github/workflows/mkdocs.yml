@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: 22.x
       - run: npm ci --ignore-scripts
-      - name: Lint documentation markdown
-        run: npm run lint:markdown -- documentation/**/*.md
+      - name: Lint explainers markdown
+        run: npm run lint:markdown -- explainers/**/*.md
       - if: startsWith(github.ref, 'refs/tags/v')
         name: Get tagged version
         id: tagged_version

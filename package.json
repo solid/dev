@@ -1,0 +1,23 @@
+{
+  "name": "explainers",
+  "version": "1.0.0",
+  "description": "Explainers for the Solid Project",
+  "main": "index.js",
+  "scripts": {
+    "lint:markdown": "markdownlint-cli2",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeswr/explainers.git"
+  },
+  "author": "Jesse Wright <https://github.com/jeswr/>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeswr/explainers/issues"
+  },
+  "homepage": "https://github.com/jeswr/explainers#readme",
+  "devDependencies": {
+    "markdownlint-cli2": "^0.18.1"
+  }
+}
