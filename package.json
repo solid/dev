@@ -4,7 +4,8 @@
   "description": "Explainers for the Solid Project",
   "main": "index.js",
   "scripts": {
-    "lint:markdown": "markdownlint-cli2",
+    "lint": "markdownlint-cli2 -- explainers/**/*.md",
+    "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
