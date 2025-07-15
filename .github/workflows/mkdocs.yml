@@ -1,8 +1,8 @@
-name: Documentation
+name: Explainers
 on:
   workflow_call:
 
-  # Additional trigger to deploy changes to the documentation/ folder
+  # Additional trigger to deploy changes to the explainers/ folder
   #   on push to main, ignoring tags so we don't trigger twice upon release
   push:
     branches:
@@ -16,7 +16,7 @@ jobs:
   mkdocs-prep:
     # Runs the markdown linter to ensure we don't release faulty markdown.
     # Also gets the correct major version, whether the job is triggered by a version tag
-    #   or a push to main to update the latest documentation.
+    #   or a push to main to update the latest explainers.
     runs-on: ubuntu-latest
     outputs:
       major: ${{ steps.tagged_version.outputs.major || steps.current_version.outputs.major }}
