@@ -5,4 +5,4 @@ hide:
 
 # Welcome
 
-Hello World
+Hello World!
