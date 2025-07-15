@@ -112,7 +112,7 @@ nav:
   # - Contributing:
   #     - Pull requests: contributing/making-changes.md
   #     - Releases: contributing/release.md
-  - API: ./docs/" target="_blank
+  # - API: ./docs/" target="_blank
 
 # To write documentation locally, execute the next line and browse to http://localhost:8000
 # npm run mkdocs
