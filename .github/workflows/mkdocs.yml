@@ -53,6 +53,6 @@ jobs:
       - run: git config user.email ci-bot@example.com
       - run: git fetch origin gh-pages --depth=1
       - run: |
-          cd documentation && mike deploy --push --update-aliases \
+          cd explainers && mike deploy --push --update-aliases \
             ${{ needs.mkdocs-prep.outputs.major }}.x latest
  
