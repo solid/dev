@@ -2,7 +2,6 @@ docs_dir: markdown
 
 theme:
   name: material
-  custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -66,57 +65,53 @@ extra:
     provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/CommunitySolidServer/CommunitySolidServer
-    - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/solidproject/community-server
-    - icon: fontawesome/brands/npm
-      link: https://www.npmjs.com/package/@solid/community-server
+      link: https://github.com/solid/
     - icon: fontawesome/brands/gitter
-      link: https://gitter.im/CommunitySolidServer/community
+      link: https://matrix.to/#/#solid_project:matrix.org
 
 nav:
   - Welcome:
       - README.md
-  - Features:
-      - Overview: features.md
-      - Tests: features/test.md
-  - Usage:
-      - Starting the server: usage/starting-server.md
-      - Example request: usage/example-requests.md
-      - Metadata: usage/metadata.md
-      - Identity provider:
-          - Overview: usage/identity-provider.md
-          - JSON API: usage/account/json-api.md
-          - New login method: usage/account/login-method.md
-          - Data migration: usage/account/migration.md
-      - Client credentials: usage/client-credentials.md
-      - Seeding pods: usage/seeding-pods.md
-      - Notifications: usage/notifications.md
-      - Development server: usage/dev-configuration.md
-      - Adding a new CLI parameter: usage/new-cli-parameter.md
-      - Authorization methods: usage/authorization-methods.md
-  - Architecture:
-      - Overview: architecture/overview.md
-      - Dependency injection: architecture/dependency-injection.md
-      - Core: architecture/core.md
-      - Features:
-          - Command line arguments: architecture/features/cli.md
-          - Server initialization: architecture/features/initialization.md
-          - HTTP requests: architecture/features/http-handler.md
-          - Solid protocol:
-              - Overview: architecture/features/protocol/overview.md
-              - Parsing: architecture/features/protocol/parsing.md
-              - Authorization: architecture/features/protocol/authorization.md
-              - Resource Store: architecture/features/protocol/resource-store.md
-              - Modifying resources: architecture/features/protocol/patching.md
-          - Account management:
-              - Overview: architecture/features/accounts/overview.md
-              - Controls: architecture/features/accounts/controls.md
-              - Routes: architecture/features/accounts/routes.md
-          - Notifications: architecture/features/notifications.md
-  - Contributing:
-      - Pull requests: contributing/making-changes.md
-      - Releases: contributing/release.md
+  # - Features:
+  #     - Overview: features.md
+  #     - Tests: features/test.md
+  # - Usage:
+  #     - Starting the server: usage/starting-server.md
+  #     - Example request: usage/example-requests.md
+  #     - Metadata: usage/metadata.md
+  #     - Identity provider:
+  #         - Overview: usage/identity-provider.md
+  #         - JSON API: usage/account/json-api.md
+  #         - New login method: usage/account/login-method.md
+  #         - Data migration: usage/account/migration.md
+  #     - Client credentials: usage/client-credentials.md
+  #     - Seeding pods: usage/seeding-pods.md
+  #     - Notifications: usage/notifications.md
+  #     - Development server: usage/dev-configuration.md
+  #     - Adding a new CLI parameter: usage/new-cli-parameter.md
+  #     - Authorization methods: usage/authorization-methods.md
+  # - Architecture:
+  #     - Overview: architecture/overview.md
+  #     - Dependency injection: architecture/dependency-injection.md
+  #     - Core: architecture/core.md
+  #     - Features:
+  #         - Command line arguments: architecture/features/cli.md
+  #         - Server initialization: architecture/features/initialization.md
+  #         - HTTP requests: architecture/features/http-handler.md
+  #         - Solid protocol:
+  #             - Overview: architecture/features/protocol/overview.md
+  #             - Parsing: architecture/features/protocol/parsing.md
+  #             - Authorization: architecture/features/protocol/authorization.md
+  #             - Resource Store: architecture/features/protocol/resource-store.md
+  #             - Modifying resources: architecture/features/protocol/patching.md
+  #         - Account management:
+  #             - Overview: architecture/features/accounts/overview.md
+  #             - Controls: architecture/features/accounts/controls.md
+  #             - Routes: architecture/features/accounts/routes.md
+  #         - Notifications: architecture/features/notifications.md
+  # - Contributing:
+  #     - Pull requests: contributing/making-changes.md
+  #     - Releases: contributing/release.md
   - API: ./docs/" target="_blank
 
 # To write documentation locally, execute the next line and browse to http://localhost:8000
