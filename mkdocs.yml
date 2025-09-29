@@ -10,26 +10,12 @@ edit_uri: blob/main/docs/
 copyright: Copyright &copy; - Present W3C Solid Community Group
 
 theme:
-  name: material
-  icon:
-    repo: fontawesome/brands/github
-  palette:
-    - media: '(prefers-color-scheme: light)'
-      scheme: default
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-      primary: deep purple
-      accent: deep orange
-
-    # Palette toggle for dark mode
-    - media: '(prefers-color-scheme: dark)'
-      scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
-      primary: deep purple
-      accent: deep orange
+  name: mkdocs
+  color_mode: auto
+  user_color_mode_toggle: true
+  locale: en
+  highlightjs: true
+  
   features:
     - navigation.instant
     - navigation.tabs
