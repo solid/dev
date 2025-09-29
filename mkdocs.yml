@@ -49,8 +49,6 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra:
-  version:
-    provider: mike
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/solid/
