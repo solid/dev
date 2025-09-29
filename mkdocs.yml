@@ -1,3 +1,5 @@
+docs_dir: xxx
+
 site_name: Solid Developers Documentation
 site_url: https://dev.solidproject.org/
 site_description: How to build applications with Solid.
@@ -58,3 +60,4 @@ extra:
 nav:
   - Welcome:
       - README.md
+
