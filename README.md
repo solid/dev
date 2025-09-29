@@ -6,7 +6,7 @@ Deployed at: [https://dev.solidproject.org/](https://dev.solidproject.org/)
 
 The Solid Developer documentation is generated using [MkDocs](https://www.mkdocs.org/).
 
-You can contribute to it by submitting a PR to [this repository](https://github.com/solid/dev).
+You can contribute to it by submitting a PR to [the solid/dev repository](https://github.com/solid/dev).
 
 If you use VSCode, you can [open this repo in a dev container](https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container), it will build and serve the docs on [localhost:8000](http://localhost:8000) and rebuild after any change.
 
