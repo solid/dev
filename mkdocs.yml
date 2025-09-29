@@ -54,7 +54,3 @@ extra:
       link: https://github.com/solid/
     - icon: fontawesome/brands/gitter
       link: https://matrix.to/#/#solid_project:matrix.org
-
-nav:
-  - Welcome:
-      - README.md
