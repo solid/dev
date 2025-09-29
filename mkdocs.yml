@@ -7,7 +7,7 @@ repo_name: solid/dev
 repo_url: https://github.com/solid/dev/
 edit_uri: blob/main/docs/
 
-copyright: Copyright &copy; 2025 - Present W3C Solid Community Group
+copyright: Copyright &copy; - Present W3C Solid Community Group
 
 theme:
   name: material
