@@ -1,4 +1,4 @@
-# **Guide to Building Your First Solid App**
+# **Guide to Building Your First Solid App with LDO & React**
 
 Welcome to Solid! The ecosystem has dozens of excellent tools to help you build your first application. This guide provides a clear, step-by-step path using one popular and powerful combination: **React** for the user interface and **Linked Data Objects (LDO)** to handle data.
 
