@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="W3C Solid Community Group">
+        <link rel="canonical" href="https://dev.solidproject.org/guides/ldo_react/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Guide to Building Your First Solid App with LDO &amp; React - Solid Developers Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" disabled>
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Solid Developers Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Guides</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Guide to Building Your First Solid App with LDO &amp; React</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/solid/dev/blob/main/docs/guides/ldo_react.md" class="nav-link">Edit on solid/dev
+                                    </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <button id="theme-menu" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme" class="nav-link dropdown-toggle">
+                                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                <span class="d-lg-none ms-2">Toggle theme</span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                                    <i class="fa-solid fa-sun fa-fw"></i>
+                                    <span class="ms-2">Light</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                                    <i class="fa-solid fa-moon fa-fw"></i>
+                                    <span class="ms-2">Dark</span>
+                                    <i class="fa-solid fa-check ms-auto d-none"></i>
+                                  </button>
+                                </li>
+                                <li>
+                                  <button class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="true">
+                                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                                    <span class="ms-2">Auto</span>
+                                    <i class="fa-solid fa-check ms-auto"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="../../js/darkmode.js"></script>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#guide-to-building-your-first-solid-app-with-ldo-react" class="nav-link">Guide to Building Your First Solid App with LDO &amp; React</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#what-is-solid" class="nav-link">What is Solid?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#what-is-linked-data-and-ldo" class="nav-link">What is Linked Data and LDO?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#1-getting-your-solid-identity-and-pod" class="nav-link">1. Getting Your Solid Identity and Pod</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-setting-up-your-react-project" class="nav-link">2. Setting Up Your React Project</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-integrating-ldo-for-solid" class="nav-link">3. Integrating LDO for Solid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-implementing-login-and-logout" class="nav-link">4. Implementing Login and Logout</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-defining-data-shapes-with-shex" class="nav-link">5. Defining Data Shapes with ShEx</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-fetching-and-displaying-profile-data" class="nav-link">6. Fetching and Displaying Profile Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-creating-and-storing-posts" class="nav-link">7. Creating and Storing Posts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-displaying-the-post-content" class="nav-link">8. Displaying the Post Content</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-building-and-deploying-your-app" class="nav-link">9. Building and Deploying Your App</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="guide-to-building-your-first-solid-app-with-ldo-react"><strong>Guide to Building Your First Solid App with LDO &amp; React</strong><a class="headerlink" href="#guide-to-building-your-first-solid-app-with-ldo-react" title="Permanent link">&para;</a></h1>
+<p>Welcome to Solid! The ecosystem has dozens of excellent tools to help you build your first application. This guide provides a clear, step-by-step path using one popular and powerful combination: <strong>React</strong> for the user interface and <strong>Linked Data Objects (LDO)</strong> to handle data.</p>
+<h2 id="what-is-solid"><strong>What is Solid?</strong><a class="headerlink" href="#what-is-solid" title="Permanent link">&para;</a></h2>
+<p>The Solid ecosystem is built on a simple but powerful idea: separating applications from the data they create. This gives users control over their own information. It consists of three main parts:</p>
+<ol>
+<li><strong>Solid Identity:</strong> This is your universal login for the decentralized web. Instead of creating a new account for every app, you use your single Solid Identity.</li>
+<li><strong>Solid Pod (Storage):</strong> A Pod is your personal online datastore. It's where all your data—photos, contacts, blog posts, etc.—is kept securely. You can choose where your Pod is hosted, and you grant apps permission to access its data.</li>
+<li><strong>Solid App:</strong> These are the applications you use. The key difference is that Solid apps don't have their own databases. Instead, they read from and write to your Pod, based on the permissions you've given them.</li>
+</ol>
+<p>This model means you can use multiple apps to manage the same data, and you can switch apps without losing your information.</p>
+<h2 id="what-is-linked-data-and-ldo"><strong>What is Linked Data and LDO?</strong><a class="headerlink" href="#what-is-linked-data-and-ldo" title="Permanent link">&para;</a></h2>
+<p>To make sure different apps can understand the same data, Solid uses a standard called the <strong>Resource Description Framework (RDF)</strong>. RDF, often called "Linked Data," is a flexible way to describe things and the relationships between them.</p>
+<p>While powerful, working directly with RDF can be complex. That's where <a href="https://ldo.js"><strong>Linked Data Objects (LDO)</strong></a> comes in. LDO is a library that lets you interact with the data in your Pod as if it were a regular JavaScript object. It simplifies data handling, so you can focus on building your app.</p>
+<p>LDO uses <strong>ShEx (Shape Expressions)</strong> to define the "shape" of your data. Think of a ShEx shape as a blueprint or a schema that describes what a piece of data (like a user profile or a blog post) should look like. This ensures your data is consistent and predictable.</p>
+<p>In this tutorial, we'll build a simple micro-blogging web app that allows you to write notes and upload photos to your Solid Pod.</p>
+<h2 id="1-getting-your-solid-identity-and-pod"><strong>1. Getting Your Solid Identity and Pod</strong><a class="headerlink" href="#1-getting-your-solid-identity-and-pod" title="Permanent link">&para;</a></h2>
+<p>Before you can build an app, you need a place to store your data. We'll get you set up with a free Solid Identity and Pod from solidcommunity.net.</p>
+<ol>
+<li><strong>Create an Account:</strong> Go to <a href="https://solidcommunity.net">solidcommunity.net</a> and click "Register." Fill out the form to create your account. This process creates your <strong>Solid Identity</strong>.</li>
+<li><strong>Create a Pod:</strong> After registering and logging in, you'll be prompted to "Create a Pod." Choose a name for your Pod. This will be your personal storage space.</li>
+</ol>
+<p>That's it! You now have a Solid Identity to log in with and a Pod to store your data.</p>
+<h2 id="2-setting-up-your-react-project"><strong>2. Setting Up Your React Project</strong><a class="headerlink" href="#2-setting-up-your-react-project" title="Permanent link">&para;</a></h2>
+<p>This guide assumes you are familiar with React. Let's initialize a new project using Vite, a modern and fast build tool. Since LDO works best with TypeScript, we'll use the TypeScript template.</p>
+<p>Open your terminal and run the following commands:</p>
+<pre class="highlight"><code class="language-bash">npm create vite@latest my-solid-app -- --template react-ts
+cd my-solid-app</code></pre>
+<p>Now, let's set up a basic component structure for our app. We'll create five components:</p>
+<p><strong>src/App.tsx</strong>: The main application component.</p>
+<pre class="highlight"><code class="language-typescript">import React, { FunctionComponent } from 'react';
+import { Header } from './Header';import { Blog } from './Blog';
+
+const App: FunctionComponent = () =&gt; {
+  return (
+    &lt;div className="App"&gt;
+      &lt;Header /&gt;
+      &lt;Blog /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+<p><strong>src/Header.tsx</strong>: A header for handling login.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent } from "react";
+
+export const Header: FunctionComponent = () =&gt; {
+  return (
+    &lt;header&gt;
+      &lt;p&gt;Header&lt;/p&gt;
+      &lt;hr /&gt;
+    &lt;/header&gt;
+  );
+};</code></pre>
+<p><strong>src/Blog.tsx</strong>: The main component for the blog timeline.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent } from "react";
+import { MakePost } from "./MakePost";
+import { Post } from "./Post";
+
+export const Blog: FunctionComponent = () =&gt; {
+  return (
+    &lt;main&gt;
+      &lt;MakePost /&gt;
+      &lt;hr /&gt;
+      &lt;Post /&gt;
+    &lt;/main&gt;
+  );
+};</code></pre>
+<p><strong>src/MakePost.tsx</strong>: A form for creating new posts.</p>
+<pre class="highlight"><code class="language-typescript">import { FormEvent, FunctionComponent, useCallback, useState } from "react";
+
+export const MakePost: FunctionComponent = () =&gt; {
+  const [message, setMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState&lt;File | undefined&gt;();
+
+  const onSubmit = useCallback(
+    async (e: FormEvent&lt;HTMLFormElement&gt;) =&gt; {
+      e.preventDefault();
+      // We will add upload functionality here
+      console.log("Submitting:", { message, selectedFile });
+    },
+    [message, selectedFile]
+  );
+
+  return (
+    &lt;form onSubmit={onSubmit}&gt;
+      &lt;input
+        type="text"
+        placeholder="Make a Post"
+        value={message}
+        onChange={(e) =&gt; setMessage(e.target.value)}
+      /&gt;
+      &lt;input
+        type="file"
+        accept="image/*"
+        onChange={(e) =&gt; setSelectedFile(e.target.files?.[0])}
+      /&gt;
+      &lt;input type="submit" value="Post" /&gt;
+    &lt;/form&gt;
+  );
+};</code></pre>
+<p><strong>src/Post.tsx</strong>: A component to render a single post.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent } from "react";
+
+export const Post: FunctionComponent = () =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;p&gt;A Single Post&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+<p>Start your application by running npm run dev. You should see a basic, unstyled page with a header, a form, and a placeholder for a post.</p>
+<h2 id="3-integrating-ldo-for-solid"><strong>3. Integrating LDO for Solid</strong><a class="headerlink" href="#3-integrating-ldo-for-solid" title="Permanent link">&para;</a></h2>
+<p>With the basic structure in place, let's install LDO and connect our app to the Solid ecosystem.</p>
+<pre class="highlight"><code class="language-bash">npm install @ldo/solid-react</code></pre>
+<p>This library provides React hooks and components that make Solid development much easier. To use them, we need to wrap our application in a BrowserSolidLdoProvider. You can learn more about the hooks and utilities it provides in the <a href="https://ldo.js.org/latest/api/"><strong>LDO API Documentation</strong></a>.</p>
+<p>Modify <strong>src/App.tsx</strong>:</p>
+<pre class="highlight"><code class="language-typescript">import React, { FunctionComponent } from 'react';
+import { Header } from './Header';
+import { Blog } from './Blog';
+import { BrowserSolidLdoProvider } from '@ldo/solid-react';
+
+const App: FunctionComponent = () =&gt; {
+  return (
+    &lt;div className="App"&gt;
+      &lt;BrowserSolidLdoProvider&gt;
+        &lt;Header /&gt;
+        &lt;Blog /&gt;
+      &lt;/BrowserSolidLdoProvider&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;</code></pre>
+<h2 id="4-implementing-login-and-logout"><strong>4. Implementing Login and Logout</strong><a class="headerlink" href="#4-implementing-login-and-logout" title="Permanent link">&para;</a></h2>
+<p>Now we can implement authentication. The useSolidAuth hook from LDO gives us everything we need to manage user sessions.</p>
+<p>Let's update <strong>src/Header.tsx</strong> to handle login and logout.</p>
+<pre class="highlight"><code class="language-typescript">import { useSolidAuth } from "@ldo/solid-react";
+import { FunctionComponent, useState } from "react";
+
+export const Header: FunctionComponent = () =&gt; {
+  const { session, login, logout } = useSolidAuth();
+  const [issuer, setIssuer] = useState("https://solidcommunity.net");
+
+  return (
+    &lt;header&gt;
+      {session.isLoggedIn ? (
+        // If the user is logged in
+        &lt;p&gt;
+          Logged in as {session.webId}.{" "}
+          &lt;button onClick={logout}&gt;Log Out&lt;/button&gt;
+        &lt;/p&gt;
+      ) : (
+        // If the user is not logged in
+        &lt;div&gt;
+          &lt;p&gt;You are not logged in.&lt;/p&gt;
+          &lt;input 
+            type="text" 
+            value={issuer} 
+            onChange={(e) =&gt; setIssuer(e.target.value)} 
+          /&gt;
+          &lt;button onClick={() =&gt; login(issuer)}&gt;Log In&lt;/button&gt;
+        &lt;/div&gt;
+      )}
+      &lt;hr /&gt;
+    &lt;/header&gt;
+  );
+};</code></pre>
+<p>Here's what's happening:</p>
+<ul>
+<li>useSolidAuth() gives us the session object (with info like isLoggedIn and webId), a login(issuer) function, and a logout() function.</li>
+<li>We show a "Log Out" button if session.isLoggedIn is true.</li>
+<li>Otherwise, we show an input field for the user's Pod provider (which we've pre-filled with solidcommunity.net) and a "Log In" button. Clicking it will redirect the user to their provider to authenticate.</li>
+</ul>
+<p>Next, let's update <strong>src/Blog.tsx</strong> to only show the blog content if the user is logged in.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent } from "react";
+import { MakePost } from "./MakePost";
+import { Post } from "./Post";
+import { useSolidAuth } from "@ldo/solid-react";
+
+export const Blog: FunctionComponent = () =&gt; {
+  const { session } = useSolidAuth();
+  if (!session.isLoggedIn) {
+    return &lt;p&gt;Please log in to see your blog.&lt;/p&gt;;
+  }
+
+  return (
+    &lt;main&gt;
+      &lt;MakePost /&gt;
+      &lt;hr /&gt;
+      &lt;Post /&gt;
+    &lt;/main&gt;
+  );
+};</code></pre>
+<p>Now, try logging in. You'll be redirected to solidcommunity.net, and after you approve the application, you'll be sent back to your app, now in a logged-in state.</p>
+<h2 id="5-defining-data-shapes-with-shex"><strong>5. Defining Data Shapes with ShEx</strong><a class="headerlink" href="#5-defining-data-shapes-with-shex" title="Permanent link">&para;</a></h2>
+<p>Before we can read or write data, we need to tell LDO what our data looks like. We do this using <strong>ShEx</strong>. Let's set up our project for shapes.</p>
+<p>In your terminal, run:</p>
+<pre class="highlight"><code class="language-bash">npx @ldo/cli init</code></pre>
+<p>This command installs needed libraries and creates two new folders in src: .shapes (where you'll write your ShEx schemas) and .ldo (where LDO will put the auto-generated TypeScript code).</p>
+<p>The init command creates a default foafProfile.shex. We want to define a more complete Solid Profile, so let's replace it.</p>
+<ol>
+<li>Delete the default file: rm src/.shapes/foafProfile.shex</li>
+<li>Create a new file: touch src/.shapes/solidProfile.shex</li>
+<li>Paste the following ShEx schema into <strong>src/.shapes/solidProfile.shex</strong>:</li>
+</ol>
+<pre class="highlight"><code class="language-typescript">PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX schem: &lt;http://schema.org/&gt;
+PREFIX vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+PREFIX ldp: &lt;http://www.w3.org/ns/ldp#&gt;
+PREFIX sp: &lt;http://www.w3.org/ns/pim/space#&gt;
+
+&lt;SolidProfileShape&gt; EXTRA a {
+  a [ schem:Person foaf:Person ] ;
+  vcard:fn xsd:string ? ;
+  foaf:name xsd:string ? ;
+  ldp:inbox IRI ;
+  sp:storage IRI * ;
+}</code></pre>
+<p><em>Note: This is a simplified version of a full Solid Profile shape for brevity.</em></p>
+<p>Now, build the TypeScript typings from this shape:</p>
+<pre class="highlight"><code class="language-bash">npm run build:ldo</code></pre>
+<p>This command reads your .shex files and generates corresponding code in the .ldo folder, which we'll use in the next step.</p>
+<h2 id="6-fetching-and-displaying-profile-data"><strong>6. Fetching and Displaying Profile Data</strong><a class="headerlink" href="#6-fetching-and-displaying-profile-data" title="Permanent link">&para;</a></h2>
+<p>Let's make our header more personal by displaying the user's name instead of their WebID. We can do this by fetching their profile data from their Pod.</p>
+<p>Update <strong>src/Header.tsx</strong> to use the useResource and useSubject hooks.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent, useState } from "react";
+import { useResource, useSolidAuth, useSubject } from "@ldo/solid-react";
+import { SolidProfileShapeShapeType } from "./.ldo/solidProfile.shapeTypes";
+
+export const Header: FunctionComponent = () =&gt; {
+  const { session, login, logout } = useSolidAuth();
+  const [issuer, setIssuer] = useState("https://solidcommunity.net");
+
+  // Fetch the resource at the user's WebID
+  const webIdResource = useResource(session.webId);
+  // Interpret the WebID resource using the SolidProfile shape
+  const profile = useSubject(SolidProfileShapeShapeType, session.webId);
+
+  // Determine what name to display
+  const loggedInName = webIdResource?.isReading()
+    ? "Loading..."
+    : profile?.fn || profile?.name || session.webId;
+
+  return (
+    &lt;header&gt;
+      {session.isLoggedIn ? (
+        &lt;p&gt;
+          Logged in as {loggedInName}.{" "}
+          &lt;button onClick={logout}&gt;Log Out&lt;/button&gt;
+        &lt;/p&gt;
+      ) : (
+        &lt;div&gt;
+          &lt;p&gt;You are not logged in.&lt;/p&gt;
+          &lt;input 
+            type="text" 
+            value={issuer} 
+            onChange={(e) =&gt; setIssuer(e.target.value)} 
+          /&gt;
+          &lt;button onClick={() =&gt; login(issuer)}&gt;Log In&lt;/button&gt;
+        &lt;/div&gt;
+      )}
+      &lt;hr /&gt;
+    &lt;/header&gt;
+  );
+};</code></pre>
+<h3 id="how-useresource-and-usesubject-work-together"><strong>How useResource and useSubject Work Together</strong><a class="headerlink" href="#how-useresource-and-usesubject-work-together" title="Permanent link">&para;</a></h3>
+<p>This code introduces two fundamental LDO hooks that are important to understand:</p>
+<ul>
+<li>useResource(uri) tells LDO to fetch a specific document from a server (in this case, the user's profile document). It manages the network request and loading state. All the RDF data from this document is loaded into a single, in-memory graph for your application.</li>
+<li>useSubject(ShapeType, uri) does not fetch any data. Instead, it looks at the data <em>already loaded</em> in your app's graph. It finds the data associated with the given URI and presents it to you as a clean, typed JavaScript object based on the ShapeType you provide.</li>
+</ul>
+<p>This separation is powerful. You can load multiple resources (e.g., a profile, a contacts list, and a blog post), and LDO combines them. Then, useSubject can seamlessly follow links and relationships between data, even if that data originally came from different documents. It doesn't care <em>where</em> the data came from, only that it has been loaded.</p>
+<p>Refresh your app, and you should now see your name in the header after logging in!</p>
+<h2 id="7-creating-and-storing-posts"><strong>7. Creating and Storing Posts</strong><a class="headerlink" href="#7-creating-and-storing-posts" title="Permanent link">&para;</a></h2>
+<p>Now for the core of our app: creating and saving blog posts.</p>
+<h3 id="defining-the-post-shape"><strong>Defining the Post Shape</strong><a class="headerlink" href="#defining-the-post-shape" title="Permanent link">&para;</a></h3>
+<p>First, we need a ShEx shape for our posts. Create a new file at <strong>src/.shapes/post.shex</strong> and add the following:</p>
+<pre class="highlight"><code class="language-shex">PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+PREFIX ex: &lt;https://example.com/&gt;
+PREFIX schema: &lt;http://schema.org/&gt;
+
+ex:PostSh {
+  a [schema:SocialMediaPosting schema:CreativeWork schema:Thing] ;
+  schema:articleBody&gt; xsd:string?
+      // rdfs:label '''articleBody'''
+      // rdfs:comment '''The actual body of the article. ''' ;
+  schema:uploadDate&gt; xsd:date
+      // rdfs:label '''uploadDate'''
+      // rdfs:comment '''Date when this media object was uploaded to this site.''' ;
+  schema:image IRI ?
+      // rdfs:label '''image'''
+      // rdfs:comment '''A media object that encodes this CreativeWork. This property is a synonym for encoding.''' ;
+  schema:publisher IRI
+      // rdfs:label '''publisher'''
+      // rdfs:comment '''The publisher of the creative work.''' ;
+}
+// rdfs:label '''SocialMediaPost'''
+// rdfs:comment '''A post to a social media platform, including blog posts, tweets, Facebook posts, etc.'''</code></pre>
+<p>This shape defines a SocialMediaPosting with a body, a date, and an optional image.</p>
+<p>Run the build command again to generate the typings for our new shape:</p>
+<pre class="highlight"><code class="language-bash">npm run build:ldo</code></pre>
+<h3 id="finding-where-to-save-data"><strong>Finding Where to Save Data</strong><a class="headerlink" href="#finding-where-to-save-data" title="Permanent link">&para;</a></h3>
+<p>A common question in Solid is: "Where do I save my app's data?" The best practice is to create a dedicated folder for your app inside the user's Pod. We can find the root of their storage space using the sp:storage property from their profile.</p>
+<p>Let's update <strong>src/Blog.tsx</strong> to find the root container and create a folder for our app.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent, useEffect, useState, Fragment } from "react";
+import { MakePost } from "./MakePost";
+import { Post } from "./Post";
+import { useLdo, useResource, useSolidAuth, useSubject } from "@ldo/solid-react";
+import { SolidProfileShapeShapeType } from "./.ldo/solidProfile.shapeTypes";
+import { Container, ContainerUri } from "@ldo/solid";
+
+export const Blog: FunctionComponent = () =&gt; {
+  const { session } = useSolidAuth();
+  const profile = useSubject(SolidProfileShapeShapeType, session.webId);
+  const { getResource } = useLdo();
+  const [mainContainerUri, setMainContainerUri] = useState&lt;ContainerUri&gt;();
+
+  useEffect(() =&gt; {
+    if (profile?.storage?.[0]?.["@id"]) {
+      const storageUri = profile.storage[0]["@id"] as ContainerUri;
+      const appContainerUri = `${storageUri}my-solid-app/`;
+      setMainContainerUri(appContainerUri);
+      // Create the container if it doesn't exist
+      const appContainer = getResource(appContainerUri);
+      appContainer.createIfAbsent();
+    }
+  }, [profile, getResource]);
+
+  const mainContainer = useResource(mainContainerUri);
+
+  if (!session.isLoggedIn) {
+    return &lt;p&gt;Please log in to see your blog.&lt;/p&gt;;
+  }
+
+  return (
+    &lt;main&gt;
+      &lt;MakePost mainContainer={mainContainer} /&gt;
+      &lt;hr /&gt;
+      {mainContainer
+        ?.children()
+        .filter((child): child is Container =&gt; child.type === "container")
+        .map((child) =&gt; (
+          &lt;Fragment key={child.uri}&gt;
+            &lt;Post postContainerUri={child.uri} /&gt;
+            &lt;hr /&gt;
+          &lt;/Fragment&gt;
+        ))}
+    &lt;/main&gt;
+  );
+};</code></pre>
+<p>In this useEffect, we:</p>
+<ol>
+<li>Get the user's storage location from their profile (profile.storage).</li>
+<li>Define a path for our app's container (my-solid-app/).</li>
+<li>Use getResource(appContainerUri).createIfAbsent() to create this container on their Pod if it's not already there.</li>
+</ol>
+<p>We also started logic to render posts. mainContainer.children() gets a list of all items in our app's folder. We then filter for just the containers (since each post will be in its own container) and map over them to render a Post component for each one.</p>
+<h3 id="creating-a-new-post"><strong>Creating a New Post</strong><a class="headerlink" href="#creating-a-new-post" title="Permanent link">&para;</a></h3>
+<p>Now let's wire up the <strong>src/MakePost.tsx</strong> component to actually create data.</p>
+<pre class="highlight"><code class="language-typescript">import { FormEvent, FunctionComponent, useCallback, useState } from "react";
+import { Container, Leaf, LeafUri } from "@ldo/solid";
+import { useLdo, useSolidAuth } from "@ldo/solid-react";
+import { v4 as uuid } from "uuid";
+import { PostShapeShapeType } from "./.ldo/post.shapeTypes";
+
+export const MakePost: FunctionComponent&lt;{ mainContainer?: Container }&gt; = ({
+  mainContainer,
+}) =&gt; {
+  const { session } = useSolidAuth();
+  const { createData, commitData } = useLdo();
+  const [message, setMessage] = useState("");
+  const [selectedFile, setSelectedFile] = useState&lt;File | undefined&gt;();
+
+  const onSubmit = useCallback(
+    async (e: FormEvent&lt;HTMLFormElement&gt;) =&gt; {
+      e.preventDefault();
+      if (!mainContainer || !session.webId) return;
+
+      // 1. Create a new container for the post
+      const postContainerResult = await mainContainer.createChildAndOverwrite(`${uuid()}/`);
+      if (postContainerResult.isError) return alert(postContainerResult.message);
+      const postContainer = postContainerResult.resource;
+
+      // 2. Upload the image file (if one was selected)
+      let uploadedImage: Leaf | undefined;
+      if (selectedFile) {
+        const imageResult = await postContainer.uploadChildAndOverwrite(
+          selectedFile.name as LeafUri,
+          selectedFile,
+          selectedFile.type
+        );
+        if (imageResult.isError) return alert(imageResult.message);
+        uploadedImage = imageResult.resource;
+      }
+
+      // 3. Create the structured data (index.ttl)
+      const indexResource = postContainer.child("index.ttl");
+      const post = createData(PostShapeShapeType, indexResource.uri, indexResource);
+      post.articleBody = message;
+      post.uploadDate = new Date().toISOString();
+      if (uploadedImage) {
+        post.image = { "@id": uploadedImage.uri };
+      }
+
+      // 4. Commit the data to the Pod
+      const commitResult = await commitData(post);
+      if (commitResult.isError) return alert(commitResult.message);
+
+      // Clear the form
+      setMessage("");
+      setSelectedFile(undefined);
+    },
+    [mainContainer, session.webId, selectedFile, message, createData, commitData]
+  );
+
+  return (
+    &lt;form onSubmit={onSubmit}&gt;
+      &lt;input
+        type="text"
+        placeholder="What's on your mind?"
+        value={message}
+        onChange={(e) =&gt; setMessage(e.target.value)}
+      /&gt;
+      &lt;input
+        type="file"
+        accept="image/*"
+        onChange={(e) =&gt; setSelectedFile(e.target.files?.[0])}
+      /&gt;
+      &lt;input type="submit" value="Post" /&gt;
+    &lt;/form&gt;
+  );
+};</code></pre>
+<p>This is the most complex step, so let's break it down:</p>
+<ol>
+<li><strong>Create Post Container:</strong> We create a new, uniquely named sub-container inside our main app container to hold this specific post.</li>
+<li><strong>Upload Image:</strong> If the user selected a file, we use uploadChildAndOverwrite to save it inside the new post's container. This is for "unstructured" data.</li>
+<li><strong>Create Structured Data:</strong> We define where our structured data will live (index.ttl). Then, createData(PostShapeShapeType, ...) gives us a special LDO object (post) that conforms to our PostShape. We can then set its properties (articleBody, uploadDate, image) like a normal object.</li>
+<li><strong>Commit Data:</strong> commitData(post) takes our local changes and sends them to the Solid Pod, creating the index.ttl file with the correct RDF data.</li>
+</ol>
+<h2 id="8-displaying-the-post-content"><strong>8. Displaying the Post Content</strong><a class="headerlink" href="#8-displaying-the-post-content" title="Permanent link">&para;</a></h2>
+<p>Finally, let's update <strong>src/Post.tsx</strong> to fetch and display the data for each post.</p>
+<pre class="highlight"><code class="language-typescript">import { FunctionComponent, useMemo, useCallback } from "react";
+import { ContainerUri, LeafUri } from "@ldo/solid";
+import { useLdo, useResource, useSubject } from "@ldo/solid-react";
+import { PostShapeShapeType } from "./.ldo/post.shapeTypes";
+
+export const Post: FunctionComponent&lt;{ postContainerUri: ContainerUri }&gt; = ({
+  postContainerUri,
+}) =&gt; {
+  const postIndexUri = `${postContainerUri}index.ttl`;
+  const postResource = useResource(postIndexUri);
+  const post = useSubject(PostShapeShapeType, postIndexUri);
+  const { getResource } = useLdo();
+
+  const imageResource = useResource(post?.image?.["@id"] as LeafUri | undefined);
+
+  // Convert the fetched image blob into a URL for the &lt;img&gt; tag
+  const imageUrl = useMemo(() =&gt; {
+    if (imageResource?.isBinary()) {
+      return URL.createObjectURL(imageResource.getBlob()!);
+    }
+  }, [imageResource]);
+
+  const deletePost = useCallback(async () =&gt; {
+    // We can just delete the entire container for the post
+    const postContainer = getResource(postContainerUri);
+    await postContainer.delete();
+  }, [postContainerUri, getResource]);
+
+  if (postResource?.isReading()) return &lt;p&gt;Loading post...&lt;/p&gt;;
+  if (!post) return null;
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{post.articleBody}&lt;/p&gt;
+      {imageUrl &amp;&amp; &lt;img src={imageUrl} alt="Post" style={{ maxHeight: 200 }} /&gt;}
+      &lt;p&gt;
+        &lt;small&gt;Posted on: {new Date(post.uploadDate!).toLocaleString()}&lt;/small&gt;
+      &lt;/p&gt;
+      &lt;button onClick={deletePost}&gt;Delete&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+<p>This component uses the same useResource and useSubject pattern we saw in the header to fetch the index.ttl for a specific post and interpret it as a PostShape object.</p>
+<p>A key detail is how we handle images. Most data in a Pod is private. If we simply put the image's URL in an <img> tag's src, the browser's request would be unauthenticated and fail. Instead, we must:</p>
+<ol>
+<li>Fetch the image using useResource, which makes an authenticated request.</li>
+<li>Get the binary data as a Blob using imageResource.getBlob().</li>
+<li>Create a local URL for that blob using URL.createObjectURL() that the <img> tag can use.</li>
+</ol>
+<p>We've also added a delete button that simply deletes the entire container for the post.</p>
+<h2 id="9-building-and-deploying-your-app"><strong>9. Building and Deploying Your App</strong><a class="headerlink" href="#9-building-and-deploying-your-app" title="Permanent link">&para;</a></h2>
+<p>Congratulations! You've built a fully functional, decentralized Solid application. To deploy it, you first need to create a production build.</p>
+<pre class="highlight"><code class="language-bash">npm run build</code></pre>
+<p>This command creates a dist folder (for Vite) containing static HTML, CSS, and JavaScript files. Because this is a client-side application (all the logic runs in the user's browser), you can deploy it on any static hosting service. Popular free options include:</p>
+<ul>
+<li><a href="https://vercel.com">Vercel</a></li>
+<li><a href="https://netlify.com">Netlify</a></li>
+<li><a href="https://pages.github.com/">GitHub Pages</a></li>
+</ul>
+<p>Simply upload the contents of your dist folder to one of these services.</p>
+<p>The beauty of Solid is that your deployed application is completely independent of the data store. Anyone with a Solid Pod—whether it's on solidcommunity.net, a provider run by ODI, or one they host themselves—can log in and use your app to manage data on their own Pod. You've created a truly interoperable application for the decentralized web.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; - Present W3C Solid Community Group</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
