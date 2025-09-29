@@ -1,7 +1,7 @@
 services:
   mkdocs:
     build: .
-    command: mkdocs serve
+    command: mkdocs serve --dev-addr=0.0.0.0:8000
     ports:
       - 8000:8000
     volumes:
