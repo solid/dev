@@ -3,6 +3,12 @@ site_url: https://dev.solidproject.org/
 site_description: How to build applications with Solid.
 site_author: W3C Solid Community Group
 
+repo_name: solid/dev
+repo_url: https://github.com/solid/dev/
+edit_uri: blob/main/docs/
+
+copyright: Copyright &copy; 2025 - Present W3C Solid Community Group
+
 theme:
   name: material
   icon:
