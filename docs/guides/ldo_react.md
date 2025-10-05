@@ -16,7 +16,7 @@ This model means you can use multiple apps to manage the same data, and you can 
 
 To make sure different apps can understand the same data, Solid uses a standard called the **Resource Description Framework (RDF)**. RDF, often called "Linked Data," is a flexible way to describe things and the relationships between them.
 
-While powerful, working directly with RDF can be complex. That's where [**Linked Data Objects (LDO)**](https://ldo.js) comes in. LDO is a library that lets you interact with the data in your Pod as if it were a regular JavaScript object. It simplifies data handling, so you can focus on building your app.
+While powerful, working directly with RDF can be complex. That's where [**Linked Data Objects (LDO)**](https://ldo.js.org) comes in. LDO is a library that lets you interact with the data in your Pod as if it were a regular JavaScript object. It simplifies data handling, so you can focus on building your app.
 
 LDO uses **ShEx (Shape Expressions)** to define the "shape" of your data. Think of a ShEx shape as a blueprint or a schema that describes what a piece of data (like a user profile or a blog post) should look like. This ensures your data is consistent and predictable.
 
