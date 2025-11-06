@@ -401,7 +401,7 @@ npm run build:ldo
 
 ### Finding Where to Save Data
 
-A common question in Solid is: "Where do I save my app's data?" The best practice is to create a dedicated folder for your app inside the user's Pod. We can find the root of their storage space using the sp:storage property from their profile.
+A common question in Solid is: "Where do I save my app's data?" One possibility is to create a dedicated folder for your app inside the user's Pod. We can find the root of their storage space using the sp:storage property from their profile.
 
 Let's update **src/Blog.tsx** to find the root container and create a folder for our app.
 
