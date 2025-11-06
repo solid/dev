@@ -1,8 +1,8 @@
-# **Guide to Building Your First Solid App with LDO & React**
+# Building Your First Solid App with LDO & React
 
 Welcome to Solid! The ecosystem has dozens of excellent tools to help you build your first application. This guide provides a clear, step-by-step path using one popular and powerful combination: **React** for the user interface and **Linked Data Objects (LDO)** to handle data.
 
-## **What is Solid?**
+## What is Solid?
 
 The Solid ecosystem is built on a simple but powerful idea: separating applications from the data they create. This gives users control over their own information. It consists of three main parts:
 
@@ -12,7 +12,7 @@ The Solid ecosystem is built on a simple but powerful idea: separating applicati
 
 This model means you can use multiple apps to manage the same data, and you can switch apps without losing your information.
 
-## **What is Linked Data and LDO?**
+## What is Linked Data and LDO?
 
 To make sure different apps can understand the same data, Solid uses a standard called the **Resource Description Framework (RDF)**. RDF, often called "Linked Data," is a flexible way to describe things and the relationships between them.
 
@@ -22,7 +22,7 @@ LDO uses **ShEx (Shape Expressions)** to define the "shape" of your data. Think 
 
 In this tutorial, we'll build a simple micro-blogging web app that allows you to write notes and upload photos to your Solid Pod.
 
-## **1. Getting Your Solid Identity and Pod**
+## 1. Getting Your Solid Identity and Pod
 
 Before you can build an app, you need a place to store your data. We'll get you set up with a free Solid Identity and Pod from solidcommunity.net.
 
@@ -31,7 +31,7 @@ Before you can build an app, you need a place to store your data. We'll get you 
 
 That's it! You now have a Solid Identity to log in with and a Pod to store your data.
 
-## **2. Setting Up Your React Project**
+## 2. Setting Up Your React Project
 
 This guide assumes you are familiar with React. Let's initialize a new project using Vite, a modern and fast build tool. Since LDO works best with TypeScript, we'll use the TypeScript template.
 
@@ -148,7 +148,7 @@ export const Post: FunctionComponent = () => {
 
 Start your application by running npm run dev. You should see a basic, unstyled page with a header, a form, and a placeholder for a post.
 
-## **3. Integrating LDO for Solid**
+## 3. Integrating LDO for Solid
 
 With the basic structure in place, let's install LDO and connect our app to the Solid ecosystem.
 
@@ -180,7 +180,7 @@ const App: FunctionComponent = () => {
 export default App;
 ```
 
-## **4. Implementing Login and Logout**
+## 4. Implementing Login and Logout
 
 Now we can implement authentication. The useSolidAuth hook from LDO gives us everything we need to manage user sessions.
 
@@ -252,7 +252,7 @@ export const Blog: FunctionComponent = () => {
 
 Now, try logging in. You'll be redirected to solidcommunity.net, and after you approve the application, you'll be sent back to your app, now in a logged-in state.
 
-## **5. Defining Data Shapes with ShEx**
+## 5. Defining Data Shapes with ShEx
 
 Before we can read or write data, we need to tell LDO what our data looks like. We do this using **ShEx**. Let's set up our project for shapes.
 
@@ -297,7 +297,7 @@ npm run build:ldo
 
 This command reads your .shex files and generates corresponding code in the .ldo folder, which we'll use in the next step.
 
-## **6. Fetching and Displaying Profile Data**
+## 6. Fetching and Displaying Profile Data
 
 Let's make our header more personal by displaying the user's name instead of their WebID. We can do this by fetching their profile data from their Pod.
 
@@ -346,7 +346,7 @@ export const Header: FunctionComponent = () => {
 };
 ```
 
-### **How useResource and useSubject Work Together**
+### How useResource and useSubject Work Together
 
 This code introduces two fundamental LDO hooks that are important to understand:
 
@@ -357,11 +357,11 @@ This separation is powerful. You can load multiple resources (e.g., a profile, a
 
 Refresh your app, and you should now see your name in the header after logging in!
 
-## **7. Creating and Storing Posts**
+## 7. Creating and Storing Posts
 
 Now for the core of our app: creating and saving blog posts.
 
-### **Defining the Post Shape**
+### Defining the Post Shape
 
 First, we need a ShEx shape for our posts. Create a new file at **src/.shapes/post.shex** and add the following:
 
@@ -399,7 +399,7 @@ Run the build command again to generate the typings for our new shape:
 npm run build:ldo
 ```
 
-### **Finding Where to Save Data**
+### Finding Where to Save Data
 
 A common question in Solid is: "Where do I save my app's data?" The best practice is to create a dedicated folder for your app inside the user's Pod. We can find the root of their storage space using the sp:storage property from their profile.
 
@@ -462,7 +462,7 @@ In this useEffect, we:
 
 We also started logic to render posts. mainContainer.children() gets a list of all items in our app's folder. We then filter for just the containers (since each post will be in its own container) and map over them to render a Post component for each one.
 
-### **Creating a New Post**
+### Creating a New Post
 
 Now let's wire up the **src/MakePost.tsx** component to actually create data.
 
@@ -549,7 +549,7 @@ This is the most complex step, so let's break it down:
 3. **Create Structured Data:** We define where our structured data will live (index.ttl). Then, createData(PostShapeShapeType, ...) gives us a special LDO object (post) that conforms to our PostShape. We can then set its properties (articleBody, uploadDate, image) like a normal object.
 4. **Commit Data:** commitData(post) takes our local changes and sends them to the Solid Pod, creating the index.ttl file with the correct RDF data.
 
-## **8. Displaying the Post Content**
+## 8. Displaying the Post Content
 
 Finally, let's update **src/Post.tsx** to fetch and display the data for each post.
 
@@ -608,7 +608,7 @@ A key detail is how we handle images. Most data in a Pod is private. If we simpl
 
 We've also added a delete button that simply deletes the entire container for the post.
 
-## **9. Building and Deploying Your App**
+## 9. Building and Deploying Your App
 
 Congratulations! You've built a fully functional, decentralized Solid application. To deploy it, you first need to create a production build.
 
