@@ -1,4 +1,4 @@
-# Solid + Next.js + LDO: Demo Application Guide
+# Solid + Next.js + LDO: Demo Application
 
 This is a tutorial on how to create a Solid Application using [Next.js](https://nextjs.org/), [LDO](https://ldo.js.org/latest/) and [ACP](https://solidproject.org/TR/acp).
 
