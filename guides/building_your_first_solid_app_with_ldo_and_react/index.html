@@ -1,0 +1,1458 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to build applications with Solid.">
+      
+      
+        <meta name="author" content="W3C Solid Community Group">
+      
+      
+        <link rel="canonical" href="https://dev.solidproject.org/guides/building_your_first_solid_app_with_ldo_and_react/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../hosting_the_community_solid_server_in_an_azure_app_service/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Building Your First Solid App with LDO & React - Solid Developers Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#building-your-first-solid-app-with-ldo-react" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Solid Developers Documentation" class="md-header__button md-logo" aria-label="Solid Developers Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Solid Developers Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building Your First Solid App with LDO &amp; React
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/solid/dev/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    solid/dev
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Solid Developers Documentation" class="md-nav__button md-logo" aria-label="Solid Developers Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Solid Developers Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/solid/dev/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    solid/dev
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Building Your First Solid App with LDO &amp; React
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Your First Solid App with LDO &amp; React
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Solid?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-linked-data-and-ldo" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Linked Data and LDO?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-getting-your-solid-identity-and-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Getting Your Solid Identity and Pod
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setting-up-your-react-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setting Up Your React Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-integrating-ldo-for-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Integrating LDO for Solid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-implementing-login-and-logout" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Implementing Login and Logout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-defining-data-shapes-with-shex" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Defining Data Shapes with ShEx
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-fetching-and-displaying-profile-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Fetching and Displaying Profile Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Fetching and Displaying Profile Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-useresource-and-usesubject-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      How useResource and useSubject Work Together
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-creating-and-storing-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Creating and Storing Posts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Creating and Storing Posts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-post-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the Post Shape
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-where-to-save-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Where to Save Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a New Post
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-displaying-the-post-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Displaying the Post Content
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-building-and-deploying-your-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Building and Deploying Your App
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hosting_the_community_solid_server_in_an_azure_app_service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hosting the Community Solid Server in an Azure App Service
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solid_nextjs_ldo_demo_application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Solid + Next.js + LDO: Demo Application
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Solid?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-linked-data-and-ldo" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Linked Data and LDO?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-getting-your-solid-identity-and-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Getting Your Solid Identity and Pod
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setting-up-your-react-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setting Up Your React Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-integrating-ldo-for-solid" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Integrating LDO for Solid
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-implementing-login-and-logout" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Implementing Login and Logout
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-defining-data-shapes-with-shex" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Defining Data Shapes with ShEx
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-fetching-and-displaying-profile-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Fetching and Displaying Profile Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Fetching and Displaying Profile Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-useresource-and-usesubject-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      How useResource and useSubject Work Together
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-creating-and-storing-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Creating and Storing Posts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Creating and Storing Posts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-post-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the Post Shape
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-where-to-save-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Where to Save Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a New Post
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-displaying-the-post-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Displaying the Post Content
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-building-and-deploying-your-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Building and Deploying Your App
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="building-your-first-solid-app-with-ldo-react">Building Your First Solid App with LDO &amp; React<a class="headerlink" href="#building-your-first-solid-app-with-ldo-react" title="Permanent link">&para;</a></h1>
+<p>Welcome to Solid! The ecosystem has dozens of excellent tools to help you build your first application. This guide provides a clear, step-by-step path using one popular and powerful combination: <strong>React</strong> for the user interface and <strong>Linked Data Objects (LDO)</strong> to handle data.</p>
+<h2 id="what-is-solid">What is Solid?<a class="headerlink" href="#what-is-solid" title="Permanent link">&para;</a></h2>
+<p>The Solid ecosystem is built on a simple but powerful idea: separating applications from the data they create. This gives users control over their own information. It consists of three main parts:</p>
+<ol>
+<li><strong>Solid Identity:</strong> This is your universal login for the decentralized web. Instead of creating a new account for every app, you use your single Solid Identity.</li>
+<li><strong>Solid Pod (Storage):</strong> A Pod is your personal online datastore. It's where all your data—photos, contacts, blog posts, etc.—is kept securely. You can choose where your Pod is hosted, and you grant apps permission to access its data.</li>
+<li><strong>Solid App:</strong> These are the applications you use. The key difference is that Solid apps don't have their own databases. Instead, they read from and write to your Pod, based on the permissions you've given them.</li>
+</ol>
+<p>This model means you can use multiple apps to manage the same data, and you can switch apps without losing your information.</p>
+<h2 id="what-is-linked-data-and-ldo">What is Linked Data and LDO?<a class="headerlink" href="#what-is-linked-data-and-ldo" title="Permanent link">&para;</a></h2>
+<p>To make sure different apps can understand the same data, Solid uses a standard called the <strong>Resource Description Framework (RDF)</strong>. RDF, often called "Linked Data," is a flexible way to describe things and the relationships between them.</p>
+<p>While powerful, working directly with RDF can be complex. That's where <a href="https://ldo.js.org"><strong>Linked Data Objects (LDO)</strong></a> comes in. LDO is a library that lets you interact with the data in your Pod as if it were a regular JavaScript object. It simplifies data handling, so you can focus on building your app.</p>
+<p>LDO uses <strong>ShEx (Shape Expressions)</strong> to define the "shape" of your data. Think of a ShEx shape as a blueprint or a schema that describes what a piece of data (like a user profile or a blog post) should look like. This ensures your data is consistent and predictable.</p>
+<p>In this tutorial, we'll build a simple micro-blogging web app that allows you to write notes and upload photos to your Solid Pod.</p>
+<h2 id="1-getting-your-solid-identity-and-pod">1. Getting Your Solid Identity and Pod<a class="headerlink" href="#1-getting-your-solid-identity-and-pod" title="Permanent link">&para;</a></h2>
+<p>Before you can build an app, you need a place to store your data. We'll get you set up with a free Solid Identity and Pod from solidcommunity.net.</p>
+<ol>
+<li><strong>Create an Account:</strong> Go to <a href="https://solidcommunity.net">solidcommunity.net</a> and click "Register." Fill out the form to create your account. This process creates your <strong>Solid Identity</strong>.</li>
+<li><strong>Create a Pod:</strong> After registering and logging in, you'll be prompted to "Create a Pod." Choose a name for your Pod. This will be your personal storage space.</li>
+</ol>
+<p>That's it! You now have a Solid Identity to log in with and a Pod to store your data.</p>
+<h2 id="2-setting-up-your-react-project">2. Setting Up Your React Project<a class="headerlink" href="#2-setting-up-your-react-project" title="Permanent link">&para;</a></h2>
+<p>This guide assumes you are familiar with React. Let's initialize a new project using Vite, a modern and fast build tool. Since LDO works best with TypeScript, we'll use the TypeScript template.</p>
+<p>Open your terminal and run the following commands:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>my-solid-app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>react-ts
+<span class="nb">cd</span><span class="w"> </span>my-solid-app
+</code></pre></div>
+<p>Now, let's set up a basic component structure for our app. We'll create five components:</p>
+<p><strong>src/App.tsx</strong>: The main application component.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Header</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Header&#39;</span><span class="p">;</span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Blog</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Blog&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Header</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Blog</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>src/Header.tsx</strong>: A header for handling login.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Header</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Header</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/header&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>src/Blog.tsx</strong>: The main component for the blog timeline.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MakePost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./MakePost&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Post</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./Post&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Blog</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">MakePost</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Post</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/main&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>src/MakePost.tsx</strong>: A form for creating new posts.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FormEvent</span><span class="p">,</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="p">,</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MakePost</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">setMessage</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">selectedFile</span><span class="p">,</span><span class="w"> </span><span class="nx">setSelectedFile</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">File</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">onSubmit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="o">:</span><span class="w"> </span><span class="kt">FormEvent</span><span class="o">&lt;</span><span class="nx">HTMLFormElement</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="w">      </span><span class="c1">// We will add upload functionality here</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Submitting:&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">selectedFile</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">selectedFile</span><span class="p">]</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">form</span><span class="w"> </span><span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">onSubmit</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">input</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Make a Post&quot;</span>
+<span class="w">        </span><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">message</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setMessage</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+<span class="w">      </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">input</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span>
+<span class="w">        </span><span class="nx">accept</span><span class="o">=</span><span class="s2">&quot;image/*&quot;</span>
+<span class="w">        </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setSelectedFile</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="o">?</span><span class="p">.[</span><span class="mf">0</span><span class="p">])}</span>
+<span class="w">      </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="w"> </span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Post&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/form&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><strong>src/Post.tsx</strong>: A component to render a single post.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Post</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">A</span><span class="w"> </span><span class="nx">Single</span><span class="w"> </span><span class="nx">Post</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Start your application by running npm run dev. You should see a basic, unstyled page with a header, a form, and a placeholder for a post.</p>
+<h2 id="3-integrating-ldo-for-solid">3. Integrating LDO for Solid<a class="headerlink" href="#3-integrating-ldo-for-solid" title="Permanent link">&para;</a></h2>
+<p>With the basic structure in place, let's install LDO and connect our app to the Solid ecosystem.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>@ldo/solid-react
+</code></pre></div>
+<p>This library provides React hooks and components that make Solid development much easier. To use them, we need to wrap our application in a BrowserSolidLdoProvider. You can learn more about the hooks and utilities it provides in the <a href="https://ldo.js.org/latest/api/"><strong>LDO API Documentation</strong></a>.</p>
+<p>Modify <strong>src/App.tsx</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Header</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Header&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Blog</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./Blog&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BrowserSolidLdoProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@ldo/solid-react&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">BrowserSolidLdoProvider</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">Header</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">Blog</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/BrowserSolidLdoProvider&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="4-implementing-login-and-logout">4. Implementing Login and Logout<a class="headerlink" href="#4-implementing-login-and-logout" title="Permanent link">&para;</a></h2>
+<p>Now we can implement authentication. The useSolidAuth hook from LDO gives us everything we need to manage user sessions.</p>
+<p>Let's update <strong>src/Header.tsx</strong> to handle login and logout.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid-react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Header</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">session</span><span class="p">,</span><span class="w"> </span><span class="nx">login</span><span class="p">,</span><span class="w"> </span><span class="nx">logout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">issuer</span><span class="p">,</span><span class="w"> </span><span class="nx">setIssuer</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;https://solidcommunity.net&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">session</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// If the user is logged in</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="nx">Logged</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="p">{</span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">}.{</span><span class="s2">&quot; &quot;</span><span class="p">}</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">logout</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Log</span><span class="w"> </span><span class="nx">Out</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// If the user is not logged in</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">not</span><span class="w"> </span><span class="nx">logged</span><span class="w"> </span><span class="ow">in</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span>
+<span class="w">            </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="w"> </span>
+<span class="w">            </span><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">issuer</span><span class="p">}</span><span class="w"> </span>
+<span class="w">            </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setIssuer</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span><span class="w"> </span>
+<span class="w">          </span><span class="o">/&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">issuer</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Log</span><span class="w"> </span><span class="nx">In</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">      </span><span class="p">)}</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/header&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Here's what's happening:</p>
+<ul>
+<li>useSolidAuth() gives us the session object (with info like isLoggedIn and webId), a login(issuer) function, and a logout() function.</li>
+<li>We show a "Log Out" button if session.isLoggedIn is true.</li>
+<li>Otherwise, we show an input field for the user's Pod provider (which we've pre-filled with solidcommunity.net) and a "Log In" button. Clicking it will redirect the user to their provider to authenticate.</li>
+</ul>
+<p>Next, let's update <strong>src/Blog.tsx</strong> to only show the blog content if the user is logged in.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MakePost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./MakePost&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Post</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./Post&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid-react&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Blog</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">session</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Please</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">see</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">blog</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">MakePost</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Post</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/main&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Now, try logging in. You'll be redirected to solidcommunity.net, and after you approve the application, you'll be sent back to your app, now in a logged-in state.</p>
+<h2 id="5-defining-data-shapes-with-shex">5. Defining Data Shapes with ShEx<a class="headerlink" href="#5-defining-data-shapes-with-shex" title="Permanent link">&para;</a></h2>
+<p>Before we can read or write data, we need to tell LDO what our data looks like. We do this using <strong>ShEx</strong>. Let's set up our project for shapes.</p>
+<p>In your terminal, run:</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>@ldo/cli<span class="w"> </span>init
+</code></pre></div>
+<p>This command installs needed libraries and creates two new folders in src: .shapes (where you'll write your ShEx schemas) and .ldo (where LDO will put the auto-generated TypeScript code).</p>
+<p>The init command creates a default foafProfile.shex. We want to define a more complete Solid Profile, so let's replace it.</p>
+<ol>
+<li>Delete the default file: rm src/.shapes/foafProfile.shex</li>
+<li>Create a new file: touch src/.shapes/solidProfile.shex</li>
+<li>Paste the following ShEx schema into <strong>src/.shapes/solidProfile.shex</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nx">PREFIX</span><span class="w"> </span><span class="nx">foaf</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//xmlns.com/foaf/0.1/&gt;</span>
+<span class="nx">PREFIX</span><span class="w"> </span><span class="nx">schem</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//schema.org/&gt;</span>
+<span class="nx">PREFIX</span><span class="w"> </span><span class="nx">vcard</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//www.w3.org/2006/vcard/ns#&gt;</span>
+<span class="nx">PREFIX</span><span class="w"> </span><span class="nx">xsd</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//www.w3.org/2001/XMLSchema#&gt;</span>
+<span class="nx">PREFIX</span><span class="w"> </span><span class="nx">ldp</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//www.w3.org/ns/ldp#&gt;</span>
+<span class="nx">PREFIX</span><span class="w"> </span><span class="nx">sp</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">http</span><span class="o">:</span><span class="c1">//www.w3.org/ns/pim/space#&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">SolidProfileShape</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">EXTRA</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">a</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nx">schem</span><span class="o">:</span><span class="kt">Person</span><span class="w"> </span><span class="nx">foaf</span><span class="o">:</span><span class="kt">Person</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="nx">vcard</span><span class="o">:</span><span class="kt">fn</span><span class="w"> </span><span class="nx">xsd</span><span class="o">:</span><span class="kt">string</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="nx">foaf</span><span class="o">:</span><span class="kt">name</span><span class="w"> </span><span class="nx">xsd</span><span class="o">:</span><span class="kt">string</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="nx">ldp</span><span class="o">:</span><span class="kt">inbox</span><span class="w"> </span><span class="nx">IRI</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="nx">sp</span><span class="o">:</span><span class="kt">storage</span><span class="w"> </span><span class="nx">IRI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>Note: This is a simplified version of a full Solid Profile shape for brevity.</em></p>
+<p>Now, build the TypeScript typings from this shape:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build:ldo
+</code></pre></div>
+<p>This command reads your .shex files and generates corresponding code in the .ldo folder, which we'll use in the next step.</p>
+<h2 id="6-fetching-and-displaying-profile-data">6. Fetching and Displaying Profile Data<a class="headerlink" href="#6-fetching-and-displaying-profile-data" title="Permanent link">&para;</a></h2>
+<p>Let's make our header more personal by displaying the user's name instead of their WebID. We can do this by fetching their profile data from their Pod.</p>
+<p>Update <strong>src/Header.tsx</strong> to use the useResource and useSubject hooks.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useResource</span><span class="p">,</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">useSubject</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid-react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">SolidProfileShapeShapeType</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./.ldo/solidProfile.shapeTypes&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Header</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">session</span><span class="p">,</span><span class="w"> </span><span class="nx">login</span><span class="p">,</span><span class="w"> </span><span class="nx">logout</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">issuer</span><span class="p">,</span><span class="w"> </span><span class="nx">setIssuer</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;https://solidcommunity.net&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Fetch the resource at the user&#39;s WebID</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">webIdResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useResource</span><span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Interpret the WebID resource using the SolidProfile shape</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSubject</span><span class="p">(</span><span class="nx">SolidProfileShapeShapeType</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Determine what name to display</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">loggedInName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">webIdResource</span><span class="o">?</span><span class="p">.</span><span class="nx">isReading</span><span class="p">()</span>
+<span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;Loading...&quot;</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="nx">profile</span><span class="o">?</span><span class="p">.</span><span class="nx">fn</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">profile</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">header</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">session</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="nx">Logged</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="p">{</span><span class="nx">loggedInName</span><span class="p">}.{</span><span class="s2">&quot; &quot;</span><span class="p">}</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">logout</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Log</span><span class="w"> </span><span class="nx">Out</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">not</span><span class="w"> </span><span class="nx">logged</span><span class="w"> </span><span class="ow">in</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span>
+<span class="w">            </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="w"> </span>
+<span class="w">            </span><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">issuer</span><span class="p">}</span><span class="w"> </span>
+<span class="w">            </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setIssuer</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span><span class="w"> </span>
+<span class="w">          </span><span class="o">/&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">issuer</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Log</span><span class="w"> </span><span class="nx">In</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">      </span><span class="p">)}</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/header&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="how-useresource-and-usesubject-work-together">How useResource and useSubject Work Together<a class="headerlink" href="#how-useresource-and-usesubject-work-together" title="Permanent link">&para;</a></h3>
+<p>This code introduces two fundamental LDO hooks that are important to understand:</p>
+<ul>
+<li>useResource(uri) tells LDO to fetch a specific document from a server (in this case, the user's profile document). It manages the network request and loading state. All the RDF data from this document is loaded into a single, in-memory graph for your application.</li>
+<li>useSubject(ShapeType, uri) does not fetch any data. Instead, it looks at the data <em>already loaded</em> in your app's graph. It finds the data associated with the given URI and presents it to you as a clean, typed JavaScript object based on the ShapeType you provide.</li>
+</ul>
+<p>This separation is powerful. You can load multiple resources (e.g., a profile, a contacts list, and a blog post), and LDO combines them. Then, useSubject can seamlessly follow links and relationships between data, even if that data originally came from different documents. It doesn't care <em>where</em> the data came from, only that it has been loaded.</p>
+<p>Refresh your app, and you should now see your name in the header after logging in!</p>
+<h2 id="7-creating-and-storing-posts">7. Creating and Storing Posts<a class="headerlink" href="#7-creating-and-storing-posts" title="Permanent link">&para;</a></h2>
+<p>Now for the core of our app: creating and saving blog posts.</p>
+<h3 id="defining-the-post-shape">Defining the Post Shape<a class="headerlink" href="#defining-the-post-shape" title="Permanent link">&para;</a></h3>
+<p>First, we need a ShEx shape for our posts. Create a new file at <strong>src/.shapes/post.shex</strong> and add the following:</p>
+<div class="highlight"><pre><span></span><code><span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">ex</span><span class="p">:</span> <span class="nl">&lt;https://example.com/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span> <span class="nl">&lt;http://schema.org/&gt;</span>
+
+<span class="nn">ex</span><span class="p">:</span><span class="nt">PostSh</span> <span class="p">{</span>
+  <span class="k">a</span> <span class="p">[</span><span class="nn">schema</span><span class="p">:</span><span class="nt">SocialMediaPosting</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">CreativeWork</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">Thing</span><span class="p">]</span> <span class="p">;</span>
+  <span class="nn">schema</span><span class="p">:</span><span class="nt">articleBody</span><span class="err">&gt;</span> <span class="nn">xsd</span><span class="p">:</span><span class="nt">string</span><span class="o">?</span>
+      <span class="err">//</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="s">&#39;&#39;&#39;articleBody&#39;&#39;&#39;</span>
+<span class="s">      // rdfs:comment &#39;&#39;&#39;The actual body of the article. &#39;&#39;&#39; ;</span>
+<span class="s">  schema:uploadDate&gt; xsd:date</span>
+<span class="s">      // rdfs:label &#39;&#39;&#39;uploadDate&#39;&#39;&#39;</span>
+<span class="s">      // rdfs:comment &#39;&#39;&#39;Date when this media object was uploaded to this site.&#39;&#39;&#39; ;</span>
+<span class="s">  schema:image IRI ?</span>
+<span class="s">      // rdfs:label &#39;&#39;&#39;image&#39;&#39;&#39;</span>
+<span class="s">      // rdfs:comment &#39;&#39;&#39;A media object that encodes this CreativeWork. This property is a synonym for encoding.&#39;&#39;&#39; ;</span>
+<span class="s">  schema:publisher IRI</span>
+<span class="s">      // rdfs:label &#39;&#39;&#39;publisher&#39;&#39;&#39;</span>
+<span class="s">      // rdfs:comment &#39;&#39;&#39;The publisher of the creative work.&#39;&#39;&#39; ;</span>
+<span class="s">}</span>
+<span class="s">// rdfs:label &#39;&#39;&#39;SocialMediaPost&#39;&#39;&#39;</span>
+<span class="s">// rdfs:comment &#39;&#39;&#39;A post to a social media platform, including blog posts, tweets, Facebook posts, etc.&#39;&#39;&#39;</span>
+</code></pre></div>
+<p>This shape defines a SocialMediaPosting with a body, a date, and an optional image.</p>
+<p>Run the build command again to generate the typings for our new shape:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build:ldo
+</code></pre></div>
+<h3 id="finding-where-to-save-data">Finding Where to Save Data<a class="headerlink" href="#finding-where-to-save-data" title="Permanent link">&para;</a></h3>
+<p>A common question in Solid is: "Where do I save my app's data?" One possibility is to create a dedicated folder for your app inside the user's Pod. We can find the root of their storage space using the sp:storage property from their profile.</p>
+<p>Let's update <strong>src/Blog.tsx</strong> to find the root container and create a folder for our app.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">Fragment</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MakePost</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./MakePost&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Post</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./Post&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useLdo</span><span class="p">,</span><span class="w"> </span><span class="nx">useResource</span><span class="p">,</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">,</span><span class="w"> </span><span class="nx">useSubject</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid-react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">SolidProfileShapeShapeType</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./.ldo/solidProfile.shapeTypes&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Container</span><span class="p">,</span><span class="w"> </span><span class="nx">ContainerUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Blog</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSubject</span><span class="p">(</span><span class="nx">SolidProfileShapeShapeType</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getResource</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLdo</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">mainContainerUri</span><span class="p">,</span><span class="w"> </span><span class="nx">setMainContainerUri</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">ContainerUri</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">profile</span><span class="o">?</span><span class="p">.</span><span class="nx">storage</span><span class="o">?</span><span class="p">.[</span><span class="mf">0</span><span class="p">]</span><span class="o">?</span><span class="p">.[</span><span class="s2">&quot;@id&quot;</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">storageUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">profile</span><span class="p">.</span><span class="nx">storage</span><span class="p">[</span><span class="mf">0</span><span class="p">][</span><span class="s2">&quot;@id&quot;</span><span class="p">]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">ContainerUri</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">appContainerUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">storageUri</span><span class="si">}</span><span class="sb">my-solid-app/`</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">setMainContainerUri</span><span class="p">(</span><span class="nx">appContainerUri</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// Create the container if it doesn&#39;t exist</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">appContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getResource</span><span class="p">(</span><span class="nx">appContainerUri</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">appContainer</span><span class="p">.</span><span class="nx">createIfAbsent</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">getResource</span><span class="p">]);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mainContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useResource</span><span class="p">(</span><span class="nx">mainContainerUri</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">session</span><span class="p">.</span><span class="nx">isLoggedIn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Please</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">see</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">blog</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">MakePost</span><span class="w"> </span><span class="nx">mainContainer</span><span class="o">=</span><span class="p">{</span><span class="nx">mainContainer</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">mainContainer</span>
+<span class="w">        </span><span class="o">?</span><span class="p">.</span><span class="nx">children</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">child</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">child</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">Container</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">child</span><span class="p">.</span><span class="kr">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;container&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">child</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="nx">Fragment</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">child</span><span class="p">.</span><span class="nx">uri</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">Post</span><span class="w"> </span><span class="nx">postContainerUri</span><span class="o">=</span><span class="p">{</span><span class="nx">child</span><span class="p">.</span><span class="nx">uri</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">hr</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">          </span><span class="o">&lt;</span><span class="err">/Fragment&gt;</span>
+<span class="w">        </span><span class="p">))}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/main&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>In this useEffect, we:</p>
+<ol>
+<li>Get the user's storage location from their profile (profile.storage).</li>
+<li>Define a path for our app's container (my-solid-app/).</li>
+<li>Use getResource(appContainerUri).createIfAbsent() to create this container on their Pod if it's not already there.</li>
+</ol>
+<p>We also started logic to render posts. mainContainer.children() gets a list of all items in our app's folder. We then filter for just the containers (since each post will be in its own container) and map over them to render a Post component for each one.</p>
+<h3 id="creating-a-new-post">Creating a New Post<a class="headerlink" href="#creating-a-new-post" title="Permanent link">&para;</a></h3>
+<p>Now let's wire up the <strong>src/MakePost.tsx</strong> component to actually create data.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FormEvent</span><span class="p">,</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="p">,</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Container</span><span class="p">,</span><span class="w"> </span><span class="nx">Leaf</span><span class="p">,</span><span class="w"> </span><span class="nx">LeafUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useLdo</span><span class="p">,</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid-react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuid</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PostShapeShapeType</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./.ldo/post.shapeTypes&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">MakePost</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="o">&lt;</span><span class="p">{</span><span class="w"> </span><span class="nx">mainContainer?</span><span class="o">:</span><span class="w"> </span><span class="kt">Container</span><span class="w"> </span><span class="p">}</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">mainContainer</span><span class="p">,</span>
+<span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSolidAuth</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createData</span><span class="p">,</span><span class="w"> </span><span class="nx">commitData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLdo</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">setMessage</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">selectedFile</span><span class="p">,</span><span class="w"> </span><span class="nx">setSelectedFile</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">File</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">onSubmit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span>
+<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="o">:</span><span class="w"> </span><span class="kt">FormEvent</span><span class="o">&lt;</span><span class="nx">HTMLFormElement</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">mainContainer</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// 1. Create a new container for the post</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">postContainerResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">mainContainer</span><span class="p">.</span><span class="nx">createChildAndOverwrite</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">uuid</span><span class="p">()</span><span class="si">}</span><span class="sb">/`</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">postContainerResult</span><span class="p">.</span><span class="nx">isError</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="nx">postContainerResult</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">postContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">postContainerResult</span><span class="p">.</span><span class="nx">resource</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// 2. Upload the image file (if one was selected)</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">uploadedImage</span><span class="o">:</span><span class="w"> </span><span class="kt">Leaf</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">selectedFile</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">postContainer</span><span class="p">.</span><span class="nx">uploadChildAndOverwrite</span><span class="p">(</span>
+<span class="w">          </span><span class="nx">selectedFile</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">LeafUri</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">selectedFile</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">selectedFile</span><span class="p">.</span><span class="kr">type</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">imageResult</span><span class="p">.</span><span class="nx">isError</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="nx">imageResult</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">uploadedImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">imageResult</span><span class="p">.</span><span class="nx">resource</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// 3. Create the structured data (index.ttl)</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">indexResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">postContainer</span><span class="p">.</span><span class="nx">child</span><span class="p">(</span><span class="s2">&quot;index.ttl&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createData</span><span class="p">(</span><span class="nx">PostShapeShapeType</span><span class="p">,</span><span class="w"> </span><span class="nx">indexResource</span><span class="p">.</span><span class="nx">uri</span><span class="p">,</span><span class="w"> </span><span class="nx">indexResource</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">post</span><span class="p">.</span><span class="nx">articleBody</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">message</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">post</span><span class="p">.</span><span class="nx">uploadDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toISOString</span><span class="p">();</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">uploadedImage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">post</span><span class="p">.</span><span class="nx">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;@id&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">uploadedImage</span><span class="p">.</span><span class="nx">uri</span><span class="w"> </span><span class="p">};</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// 4. Commit the data to the Pod</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">commitResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">commitData</span><span class="p">(</span><span class="nx">post</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">commitResult</span><span class="p">.</span><span class="nx">isError</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">alert</span><span class="p">(</span><span class="nx">commitResult</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// Clear the form</span>
+<span class="w">      </span><span class="nx">setMessage</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">setSelectedFile</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">[</span><span class="nx">mainContainer</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">.</span><span class="nx">webId</span><span class="p">,</span><span class="w"> </span><span class="nx">selectedFile</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">createData</span><span class="p">,</span><span class="w"> </span><span class="nx">commitData</span><span class="p">]</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">form</span><span class="w"> </span><span class="nx">onSubmit</span><span class="o">=</span><span class="p">{</span><span class="nx">onSubmit</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">input</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
+<span class="w">        </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;What&#39;s on your mind?&quot;</span>
+<span class="w">        </span><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">message</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setMessage</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+<span class="w">      </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">input</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span>
+<span class="w">        </span><span class="nx">accept</span><span class="o">=</span><span class="s2">&quot;image/*&quot;</span>
+<span class="w">        </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setSelectedFile</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="o">?</span><span class="p">.[</span><span class="mf">0</span><span class="p">])}</span>
+<span class="w">      </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="w"> </span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;Post&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/form&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>This is the most complex step, so let's break it down:</p>
+<ol>
+<li><strong>Create Post Container:</strong> We create a new, uniquely named sub-container inside our main app container to hold this specific post.</li>
+<li><strong>Upload Image:</strong> If the user selected a file, we use uploadChildAndOverwrite to save it inside the new post's container. This is for "unstructured" data.</li>
+<li><strong>Create Structured Data:</strong> We define where our structured data will live (index.ttl). Then, createData(PostShapeShapeType, ...) gives us a special LDO object (post) that conforms to our PostShape. We can then set its properties (articleBody, uploadDate, image) like a normal object.</li>
+<li><strong>Commit Data:</strong> commitData(post) takes our local changes and sends them to the Solid Pod, creating the index.ttl file with the correct RDF data.</li>
+</ol>
+<h2 id="8-displaying-the-post-content">8. Displaying the Post Content<a class="headerlink" href="#8-displaying-the-post-content" title="Permanent link">&para;</a></h2>
+<p>Finally, let's update <strong>src/Post.tsx</strong> to fetch and display the data for each post.</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">FunctionComponent</span><span class="p">,</span><span class="w"> </span><span class="nx">useMemo</span><span class="p">,</span><span class="w"> </span><span class="nx">useCallback</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ContainerUri</span><span class="p">,</span><span class="w"> </span><span class="nx">LeafUri</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useLdo</span><span class="p">,</span><span class="w"> </span><span class="nx">useResource</span><span class="p">,</span><span class="w"> </span><span class="nx">useSubject</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@ldo/solid-react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PostShapeShapeType</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./.ldo/post.shapeTypes&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">Post</span><span class="o">:</span><span class="w"> </span><span class="kt">FunctionComponent</span><span class="o">&lt;</span><span class="p">{</span><span class="w"> </span><span class="nx">postContainerUri</span><span class="o">:</span><span class="w"> </span><span class="kt">ContainerUri</span><span class="w"> </span><span class="p">}</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">postContainerUri</span><span class="p">,</span>
+<span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">postIndexUri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">postContainerUri</span><span class="si">}</span><span class="sb">index.ttl`</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">postResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useResource</span><span class="p">(</span><span class="nx">postIndexUri</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSubject</span><span class="p">(</span><span class="nx">PostShapeShapeType</span><span class="p">,</span><span class="w"> </span><span class="nx">postIndexUri</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getResource</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLdo</span><span class="p">();</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useResource</span><span class="p">(</span><span class="nx">post</span><span class="o">?</span><span class="p">.</span><span class="nx">image</span><span class="o">?</span><span class="p">.[</span><span class="s2">&quot;@id&quot;</span><span class="p">]</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">LeafUri</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Convert the fetched image blob into a URL for the &lt;img&gt; tag</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useMemo</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">imageResource</span><span class="o">?</span><span class="p">.</span><span class="nx">isBinary</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">imageResource</span><span class="p">.</span><span class="nx">getBlob</span><span class="p">()</span><span class="o">!</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">imageResource</span><span class="p">]);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">deletePost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// We can just delete the entire container for the post</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">postContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getResource</span><span class="p">(</span><span class="nx">postContainerUri</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">postContainer</span><span class="p">.</span><span class="ow">delete</span><span class="p">();</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">postContainerUri</span><span class="p">,</span><span class="w"> </span><span class="nx">getResource</span><span class="p">]);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">postResource</span><span class="o">?</span><span class="p">.</span><span class="nx">isReading</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="w"> </span><span class="nx">post</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/p&gt;;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">post</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">articleBody</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">imageUrl</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">img</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">imageUrl</span><span class="p">}</span><span class="w"> </span><span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Post&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span><span class="nx">maxHeight</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="w"> </span><span class="p">}}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">small</span><span class="o">&gt;</span><span class="nx">Posted</span><span class="w"> </span><span class="nx">on</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">post</span><span class="p">.</span><span class="nx">uploadDate</span><span class="o">!</span><span class="p">).</span><span class="nx">toLocaleString</span><span class="p">()}</span><span class="o">&lt;</span><span class="err">/small&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">deletePost</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Delete</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>This component uses the same useResource and useSubject pattern we saw in the header to fetch the index.ttl for a specific post and interpret it as a PostShape object.</p>
+<p>A key detail is how we handle images. Most data in a Pod is private. If we simply put the image's URL in an <img> tag's src, the browser's request would be unauthenticated and fail. Instead, we must:</p>
+<ol>
+<li>Fetch the image using useResource, which makes an authenticated request.</li>
+<li>Get the binary data as a Blob using imageResource.getBlob().</li>
+<li>Create a local URL for that blob using URL.createObjectURL() that the <img> tag can use.</li>
+</ol>
+<p>We've also added a delete button that simply deletes the entire container for the post.</p>
+<h2 id="9-building-and-deploying-your-app">9. Building and Deploying Your App<a class="headerlink" href="#9-building-and-deploying-your-app" title="Permanent link">&para;</a></h2>
+<p>Congratulations! You've built a fully functional, decentralized Solid application. To deploy it, you first need to create a production build.</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
+</code></pre></div>
+<p>This command creates a dist folder (for Vite) containing static HTML, CSS, and JavaScript files. Because this is a client-side application (all the logic runs in the user's browser), you can deploy it on any static hosting service. Popular free options include:</p>
+<ul>
+<li><a href="https://vercel.com">Vercel</a></li>
+<li><a href="https://netlify.com">Netlify</a></li>
+<li><a href="https://pages.github.com/">GitHub Pages</a></li>
+</ul>
+<p>Simply upload the contents of your dist folder to one of these services.</p>
+<p>The beauty of Solid is that your deployed application is completely independent of the data store. Anyone with a Solid Pod—whether it's on solidcommunity.net, a provider run by ODI, or one they host themselves—can log in and use your app to manage data on their own Pod. You've created a truly interoperable application for the decentralized web.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; - Present W3C Solid Community Group
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/solid/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://matrix.to/#/#solid_project:matrix.org" target="_blank" rel="noopener" title="matrix.to" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M66.4 322.5H16V0h50.4zM166.9 76.1h-50.4V512h50.4zm100.6 0h-50.4V512h50.4zM368 76h-50.4v247H368z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
