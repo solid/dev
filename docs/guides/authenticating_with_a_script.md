@@ -20,7 +20,7 @@ The flow has three stages:
 
 ## 1. Set Up the Project
 
-Create a new directory and initialise it:
+Create a new directory and initialize it:
 
 ```bash
 mkdir solid-script && cd solid-script
