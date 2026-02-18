@@ -72,7 +72,7 @@ import { Session } from '@inrupt/solid-client-authn-node';
 // In production, load these from environment variables.
 const CLIENT_ID = process.env.SOLID_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOLID_CLIENT_SECRET;
-const OIDC_ISSUER = 'http://localhost:3000'; // Your Solid server URL
+const OIDC_ISSUER = process.env.SOLID_OIDC_ISSUER; // Your Solid server URL
 
 async function main() {
   // Create a new session and log in
@@ -102,13 +102,27 @@ async function main() {
 main().catch(console.error);
 ```
 
-Run the script:
+Run the script, passing your credentials and server URL as environment variables.
+
+On **Linux / macOS** (Bash):
 
 ```bash
 SOLID_CLIENT_ID="your-client-id" \
 SOLID_CLIENT_SECRET="your-client-secret" \
+SOLID_OIDC_ISSUER="http://localhost:3000" \
 node index.js
 ```
+
+On **Windows** (PowerShell):
+
+```powershell
+$env:SOLID_CLIENT_ID="your-client-id"
+$env:SOLID_CLIENT_SECRET="your-client-secret"
+$env:SOLID_OIDC_ISSUER="http://localhost:3000"
+node index.js
+```
+
+Replace `http://localhost:3000` with the URL of your Solid server (for example, `https://solidcommunity.net` or `https://login.inrupt.com`).
 
 You should see your profile document printed to the console.
 
