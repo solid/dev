@@ -112,7 +112,7 @@ On **Linux / macOS** (Bash):
 SOLID_CLIENT_ID="your-client-id" \
 SOLID_CLIENT_SECRET="your-client-secret" \
 SOLID_OIDC_ISSUER="http://localhost:3000" \
-SOLID_RESOURCE_URL="https://example.solidcommunity.net/your-pod/private-resource" \
+SOLID_RESOURCE_URL="http://localhost:3000/your-pod/private-resource" \
 node index.js
 ```
 
@@ -122,7 +122,7 @@ On **Windows** (PowerShell):
 $env:SOLID_CLIENT_ID="your-client-id"
 $env:SOLID_CLIENT_SECRET="your-client-secret"
 $env:SOLID_OIDC_ISSUER="http://localhost:3000"
-$env:SOLID_RESOURCE_URL="https://example.solidcommunity.net/your-pod/private-resource"
+$env:SOLID_RESOURCE_URL="http://localhost:3000/your-pod/private-resource"
 node index.js
 ```
 
