@@ -102,7 +102,7 @@ async function main() {
 main().catch(console.error);
 ```
 
-Run the script, passing your credentials and server URL as environment variables.
+Run the script, passing your credentials and authorization server URL (sometimes same as Solid server URL) as environment variables.
 
 On **Linux / macOS** (Bash):
 
