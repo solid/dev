@@ -72,7 +72,7 @@ import { Session } from '@inrupt/solid-client-authn-node';
 // In production, load these from environment variables.
 const CLIENT_ID = process.env.SOLID_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOLID_CLIENT_SECRET;
-const OIDC_ISSUER = process.env.SOLID_OIDC_ISSUER; // Your Solid server URL
+const OIDC_ISSUER = process.env.SOLID_OIDC_ISSUER; // Your authorization server URL (sometimes called IdP, sometimes same as your Solid server URL)
 
 async function main() {
   // Create a new session and log in
