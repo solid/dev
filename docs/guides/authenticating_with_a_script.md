@@ -73,6 +73,7 @@ import { Session } from '@inrupt/solid-client-authn-node';
 const CLIENT_ID = process.env.SOLID_CLIENT_ID;
 const CLIENT_SECRET = process.env.SOLID_CLIENT_SECRET;
 const OIDC_ISSUER = process.env.SOLID_OIDC_ISSUER; // Your authorization server URL (sometimes called IdP, sometimes same as your Solid server URL)
+const RESOURCE_URL = process.env.SOLID_RESOURCE_URL; // URL of the protected resource to fetch (optional)
 
 async function main() {
   // Create a new session and log in
@@ -90,8 +91,9 @@ async function main() {
 
   // session.fetch works just like the standard fetch API,
   // but automatically includes authentication headers.
-  const response = await session.fetch(session.info.webId);
-  console.log(`GET ${session.info.webId} — ${response.status}`);
+  const resourceUrl = RESOURCE_URL ?? session.info.webId;
+  const response = await session.fetch(resourceUrl);
+  console.log(`GET ${resourceUrl} — ${response.status}`);
   console.log(await response.text());
 
   // Always log out when done
@@ -102,7 +104,7 @@ async function main() {
 main().catch(console.error);
 ```
 
-Run the script, passing your credentials and authorization server URL (sometimes same as Solid server URL) as environment variables.
+Run the script, passing your credentials, authorization server URL (sometimes same as Solid server URL), and optionally the URL of the protected resource you want to fetch as environment variables.
 
 On **Linux / macOS** (Bash):
 
@@ -110,6 +112,7 @@ On **Linux / macOS** (Bash):
 SOLID_CLIENT_ID="your-client-id" \
 SOLID_CLIENT_SECRET="your-client-secret" \
 SOLID_OIDC_ISSUER="http://localhost:3000" \
+SOLID_RESOURCE_URL="http://localhost:3000/your-pod/private-resource" \
 node index.js
 ```
 
@@ -119,12 +122,13 @@ On **Windows** (PowerShell):
 $env:SOLID_CLIENT_ID="your-client-id"
 $env:SOLID_CLIENT_SECRET="your-client-secret"
 $env:SOLID_OIDC_ISSUER="http://localhost:3000"
+$env:SOLID_RESOURCE_URL="http://localhost:3000/your-pod/private-resource"
 node index.js
 ```
 
-Replace `http://localhost:3000` with the URL of your Solid server (for example, `https://solidcommunity.net` or `https://login.inrupt.com`).
+Replace `http://localhost:3000` with the URL of your authorization server (for example, `https://solidcommunity.net` or `https://login.inrupt.com`), and set `SOLID_RESOURCE_URL` to the URL of the private resource you want to access. If `SOLID_RESOURCE_URL` is omitted, the script falls back to fetching your WebID profile document.
 
-You should see your profile document printed to the console.
+You should see the contents of the resource printed to the console.
 
 ## Tips
 
