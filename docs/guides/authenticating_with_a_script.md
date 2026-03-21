@@ -6,7 +6,7 @@ The approach works with any Solid server that supports the Client Credentials gr
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) v18 or later (for built-in `fetch`)
+-  An [LTS or current version](https://nodejs.org/en/about/previous-releases) of [Node.js](https://nodejs.org/)
 - A Solid account with a Pod on a server that supports Client Credentials
 - Basic familiarity with JavaScript
 
