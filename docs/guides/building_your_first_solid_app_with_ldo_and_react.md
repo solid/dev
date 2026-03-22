@@ -47,7 +47,6 @@ Now, let's set up a basic component structure for our app. We'll create five com
 **src/App.tsx**: The main application component.
 
 ```typescript
-import React from 'react';
 import type { FunctionComponent } from 'react';
 import { Header } from './Header';
 import { Blog } from './Blog';
@@ -101,14 +100,14 @@ export const Blog: FunctionComponent = () => {
 
 ```typescript
 import { useCallback, useState } from "react";
-import type { FunctionComponent } from "react";
+import type { FormEvent, FunctionComponent } from "react";
 
 export const MakePost: FunctionComponent = () => {
   const [message, setMessage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | undefined>();
 
   const onSubmit = useCallback(
-    async (e: React.SubmitEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       // We will add upload functionality here
       console.log("Submitting:", { message, selectedFile });
@@ -164,7 +163,6 @@ This library provides React hooks and components that make Solid development muc
 Modify **src/App.tsx**:
 
 ```typescript
-import React from 'react';
 import type { FunctionComponent } from 'react';
 import { Header } from './Header';
 import { Blog } from './Blog';
@@ -525,7 +523,7 @@ Now let's wire up the **src/MakePost.tsx** component to actually create data.
 
 ```typescript
 import { useCallback, useState } from "react";
-import type { FunctionComponent } from "react";
+import type { FormEvent, FunctionComponent } from "react";
 import { useLdo, useSolidAuth } from "@ldo/solid-react";
 import { v4 as uuid } from "uuid";
 import { PostShShapeType } from "./.ldo/post.shapeTypes";
@@ -544,7 +542,7 @@ export const MakePost: FunctionComponent<{ mainContainer?: SolidContainer }> = (
   }
 
   const onSubmit = useCallback(
-    async (e: React.SyntheticEvent<HTMLFormElement>) => {
+    async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (!mainContainer || !session.webId) return;
 
