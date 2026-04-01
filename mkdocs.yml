@@ -1,13 +1,13 @@
 site_name: Solid Developers Documentation
 site_url: https://dev.solidproject.org/
 site_description: How to build applications with Solid.
-site_author: W3C Solid Community Group
+site_author: Solid Project
 
 repo_name: solid/dev
 repo_url: https://github.com/solid/dev/
 edit_uri: blob/main/docs/
 
-copyright: Copyright &copy; - Present W3C Solid Community Group
+copyright: Copyright &copy; - Present Solid Project
 
 theme:
   name: material
