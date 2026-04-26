@@ -67,6 +67,14 @@ Both libraries are published to **Maven Central**, so no additional repository c
 
 ## 3. Authenticate with Solid
 
+!!! info "Specification basis"
+    The authentication flow implemented by both libraries is based on two specifications:
+
+    - **[Solid Protocol v0.11.0](https://solidproject.org/TR/2024/protocol-20240512)** (Draft Community Group Report, 12 May 2024) — defines how clients authenticate with and access Solid pods.
+    - **[Solid OIDC v0.1.0](https://solidproject.org/TR/oidc)** (Community Group Report, 2022-03-28) — specifies the OpenID Connect profile used by Solid, including DPoP-bound access tokens.
+
+    Both specifications are published by the [Solid Community Group](https://www.w3.org/groups/cg/solid/) and are not official W3C Standards. Contents remain subject to change.
+
 === "SolidAndroidClient"
 
     All three SDK clients are singletons returned by the `Solid` companion object. Start by obtaining a `SolidSignInClient` and waiting for the IPC connection to the ASS host app to become ready:
@@ -189,6 +197,12 @@ Both libraries are published to **Maven Central**, so no additional repository c
 
 ## 4. Read and Write Pod Resources
 
+!!! info "Specification basis"
+    Resource management in Solid is governed by two specifications:
+
+    - **[Linked Data Platform 1.0 (LDP)](https://www.w3.org/TR/ldp/)** (W3C Recommendation, 26 February 2015) — defines the HTTP operations for reading and writing resources on the web: GET, POST, PUT, and DELETE, as well as the container model (`ldp:BasicContainer`, `ldp:contains`) used to organise resources in a pod.
+    - **[Solid Protocol v0.11.0, §5 — Reading and Writing Resources](https://solidproject.org/TR/2024/protocol-20240512#reading-and-writing-resources)** (Draft Community Group Report, 12 May 2024) — specifies how Solid servers handle resource access, creation, patching, deletion, and the expected HTTP status codes. It is compatible with LDP and extends it with Solid-specific requirements.
+
 Both libraries expose the same conceptual resource types:
 
 - **`RDFSource`** — structured Turtle / JSON-LD data
@@ -309,7 +323,24 @@ Both libraries expose the same conceptual resource types:
 
 ## 5. Work with Contacts
 
-Both libraries provide a Solid Contacts data module that manages address books, contacts, and groups on the pod according to the [Solid Contacts specification](https://solid.github.io/contacts/).
+!!! warning "Opinionated data model — read before using in production"
+    Data modules in SAS implement a specific data model. Before building on this, you should understand what is grounded in a formal specification versus what reflects current implementors' practice:
+
+    **Vocabulary-based (W3C standard + Solid extensions):**
+
+    - Core contact and group properties (`vcard:Individual`, `vcard:Group`, `vcard:fn`, `vcard:hasEmail`, `vcard:hasTelephone`, `vcard:hasMember`) come from the [vCard Ontology for RDF](https://www.w3.org/TR/vcard-rdf/) (`http://www.w3.org/2006/vcard/ns#`), a W3C Interest Group Note (22 May 2014).
+    - The address book structure (`vcard:AddressBook`, `vcard:nameEmailIndex`, `vcard:groupIndex`, `vcard:includesGroup`, `vcard:inAddressBook`, `vcard:WebID`) is defined in the [solid/contacts vCard extension](https://github.com/solid/contacts/blob/main/vcard-extension-addressbook.md) — a Solid Project document that formally specifies the extensions to the W3C vCard ontology used across the Solid ecosystem. These terms are not part of the W3C vCard spec itself.
+
+    **Implementors' knowledge / community conventions (not in Solid TR):**
+
+    - There is currently no published Solid Community Group specification for contacts or address books in the [Solid Technical Reports](https://solidproject.org/TR/).
+    - The [PDS Interop addressbook conventions](https://pdsinterop.org/conventions/addressbook/) document how solidOS implements address books on pods using these terms, and serve as a practical reference.
+    - The design of this data module was also informed by [solid-contrib/data-modules](https://github.com/solid-contrib/data-modules), an active NLnet-funded community effort to standardise how Solid apps read and write common data types, including contacts.
+    - The privacy flags (`isPrivate`), multi-account patterns, and grouping behaviour reflect the design choices of the SAS project specifically and may not be interoperable with all other Solid applications.
+
+    **Ecosystem note:** There are currently divergent approaches to data interoperability in the Solid ecosystem. The [Solid Application Interoperability](https://solidproject.org/TR/sai) specification is one initiative working toward alignment. If broad interoperability is a priority for your application, evaluate these approaches before committing to a data module implementation.
+
+Both libraries provide a Solid Contacts data module that manages address books, contacts, and groups on the pod.
 
 === "SolidAndroidClient"
 
@@ -444,4 +475,7 @@ try {
 - [Client Library reference](https://androidsolidservices.erfangholami.com/client-library/)
 - [GitHub repository](https://github.com/pondersource/Android-Solid-Services)
 - [Solid Contacts — reference app using SolidAndroidClient](https://github.com/pondersource/Solid-Contacts)
-- [Solid specification](https://solidproject.org/TR/)
+- [Solid Technical Reports](https://solidproject.org/TR/)
+- [Linked Data Platform 1.0](https://www.w3.org/TR/ldp/) (W3C Recommendation, 2015) — HTTP operations on resources and containers
+- [PDS Interop addressbook conventions](https://pdsinterop.org/conventions/addressbook/) — de-facto solidOS address book structure
+- [solid/contacts vCard extension](https://github.com/solid/contacts/blob/main/vcard-extension-addressbook.md) — Solid Project document defining `vcard:AddressBook` and related structural terms
