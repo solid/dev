@@ -1,19 +1,19 @@
 # Building Native Android Solid Apps with AndroidSolidServices
 
-[AndroidSolidServices (ASS)](https://github.com/pondersource/Android-Solid-Services) is an open-source project that brings Solid support to native Android development. It solves a core problem in the Android ecosystem: without it, every Solid-enabled app has to build its own authentication flow and token management from scratch, and users must log in separately to each app.
+[AndroidSolidServices](https://github.com/pondersource/Android-Solid-Services), referred to here as **SolidAndroidService (SAS)**, is an open-source project that brings Solid support to native Android development. It solves a core problem in the Android ecosystem: without it, every Solid-enabled app has to build its own authentication flow and token management from scratch, and users must log in separately to each app.
 
-ASS acts as a **centralised Solid identity layer** on the device. Users authenticate once inside the ASS host app; any other app that integrates with ASS can then reuse that session without ever touching the user's credentials.
+SAS acts as a **centralised Solid identity layer** on the device. Users authenticate once inside the SAS host app; any other app that integrates with SAS can then reuse that session without ever touching the user's credentials.
 
 ## The Two Libraries
 
-ASS ships two independent libraries. Pick the one that fits your use-case:
+SAS ships two independent libraries, referred to throughout this guide as **SAC** and **SAA**. Pick the one that fits your use-case:
 
-|  | **SolidAndroidClient**  | **SolidAndroidApi**  |
+|   | **SolidAndroidClient (SAC)**  | **SolidAndroidApi (SAA)**  |
 |---  |--- |--- |
-| **How it works** | Talks to the ASS host app via IPC | Communicates directly with the Solid IDP and pod server |
-| **Auth management** | Handled by ASS — your app never sees tokens | Your app manages its own OIDC + DPoP session |
-| **Requires ASS app** | Yes | No |
-| **Best for** | Most third-party apps | Apps that need full auth control or run without ASS |
+| **How it works** | Talks to the SAS host app via IPC | Communicates directly with the Solid IDP and pod server |
+| **Auth management** | Handled by SAS — your app never sees tokens | Your app manages its own OIDC + DPoP session |
+| **Requires SAS app** | Yes | No |
+| **Best for** | Most third-party apps | Apps that need full auth control or run without SAS |
 | **Artifact** | `com.pondersource.solidandroidclient:solidandroidclient` | `com.pondersource.solidandroidapi:solidandroidapi` |
 
 ## Prerequisites
@@ -21,13 +21,13 @@ ASS ships two independent libraries. Pick the one that fits your use-case:
 - Android Studio with a project targeting **API level 26+**
 - **JDK 17** (JBR v17.0.9 is recommended)
 - A Solid account and Pod — create a free one at [solidcommunity.net](https://solidcommunity.net)
-- *(SolidAndroidClient only)* The [ASS host app](https://github.com/pondersource/Android-Solid-Services/releases) installed on the target device (if using SolidAndroidClient)
+- *(SAC only)* The [SAS host app](https://github.com/pondersource/Android-Solid-Services/releases) installed on the target device
 
-## 1. Install the Android Solid Services App
+## 1. Install the SAS Host App
 
-If you are using **SolidAndroidClient**, the ASS host app must be installed on the device. Download the latest APK from the [GitHub Releases](https://github.com/pondersource/Android-Solid-Services/releases) page, enable *Install from unknown sources* in device settings, and install it. Launch the app and sign in with your Solid pod credentials.
+If you are using **SAC**, the SAS host app must be installed on the device. Download the latest APK from the [GitHub Releases](https://github.com/pondersource/Android-Solid-Services/releases) page, enable *Install from unknown sources* in device settings, and install it. Launch the app and sign in with your Solid pod credentials.
 
-If you are using **SolidAndroidApi** only, this step is not required.
+If you are using **SAA** only, this step is not required.
 
 ## 2. Add the Dependency
 
@@ -77,7 +77,7 @@ Both libraries are published to **Maven Central**, so no additional repository c
 
 === "SolidAndroidClient"
 
-    All three SDK clients are singletons returned by the `Solid` companion object. Start by obtaining a `SolidSignInClient` and waiting for the IPC connection to the ASS host app to become ready:
+    All three SDK clients are singletons returned by the `Solid` companion object. Start by obtaining a `SolidSignInClient` and waiting for the IPC connection to the SAS host app to become ready:
 
     ```kotlin
     import com.pondersource.solidandroidclient.sdk.Solid
@@ -90,7 +90,7 @@ Both libraries are published to **Maven Central**, so no additional repository c
 
         fun connectAndLogin() {
             viewModelScope.launch {
-                // Wait until the IPC channel to ASS is established
+                // Wait until the IPC channel to SAS is established
                 signInClient.authServiceConnectionState().collectLatest { connected ->
                     if (connected) {
                         val account = signInClient.getAccount()
@@ -121,7 +121,7 @@ Both libraries are published to **Maven Central**, so no additional repository c
     ```
 
     !!! note
-        Always await a `true` emission from `authServiceConnectionState()` before calling any other client method. The IPC binding to the ASS host app is asynchronous.
+        Always await a `true` emission from `authServiceConnectionState()` before calling any other client method. The IPC binding to the SAS host app is asynchronous.
 
 === "SolidAndroidApi"
 
@@ -274,7 +274,7 @@ Both libraries expose the same conceptual resource types:
     ```
 
     !!! note
-        Always await a `true` emission from `resourceServiceConnectionState()` before calling any other client method. The IPC binding to the ASS host app is asynchronous.
+        Always await a `true` emission from `resourceServiceConnectionState()` before calling any other client method. The IPC binding to the SAS host app is asynchronous.
 
 === "SolidAndroidApi"
 
@@ -394,7 +394,7 @@ Both libraries provide a Solid Contacts data module that manages address books, 
     ```
 
     !!! note
-        Always await a `true` emission from `contactsDataModuleServiceConnectionState()` before calling any other client method. The IPC binding to the ASS host app is asynchronous.
+        Always await a `true` emission from `contactsDataModuleServiceConnectionState()` before calling any other client method. The IPC binding to the SAS host app is asynchronous.
 
 
 === "SolidAndroidApi"
@@ -446,9 +446,9 @@ Both libraries provide a Solid Contacts data module that manages address books, 
     }
     ```
 
-## Exception Handling (SolidAndroidClient)
+## Exception Handling (SAC)
 
-The client library uses a structured exception hierarchy so you can handle failure cases precisely:
+The SAC library uses a structured exception hierarchy so you can handle failure cases precisely:
 
 ```kotlin
 import com.pondersource.solidandroidclient.sdk.Exceptions.*
@@ -456,9 +456,9 @@ import com.pondersource.solidandroidclient.sdk.Exceptions.*
 try {
     //Authentication or ResourceManagment action
 } catch (e: SolidAppNotFoundException) {
-    // The ASS host app is not installed — prompt the user to install it
+    // The SAS host app is not installed — prompt the user to install it
 } catch (e: SolidServiceConnectionException) {
-    // IPC binding failed — retry or check that ASS is running
+    // IPC binding failed — retry or check that SAS is running
 } catch (e: SolidNotLoggedInException) {
     // No authenticated session — redirect to login
 } catch (e: NotPermissionException) {
@@ -474,7 +474,7 @@ try {
 - [API Library reference](https://androidsolidservices.erfangholami.com/api-library/)
 - [Client Library reference](https://androidsolidservices.erfangholami.com/client-library/)
 - [GitHub repository](https://github.com/pondersource/Android-Solid-Services)
-- [Solid Contacts — reference app using SolidAndroidClient](https://github.com/pondersource/Solid-Contacts)
+- [Solid Contacts — reference app using SAC](https://github.com/pondersource/Solid-Contacts)
 - [Solid Technical Reports](https://solidproject.org/TR/)
 - [Linked Data Platform 1.0](https://www.w3.org/TR/ldp/) (W3C Recommendation, 2015) — HTTP operations on resources and containers
 - [PDS Interop addressbook conventions](https://pdsinterop.org/conventions/addressbook/) — de-facto solidOS address book structure
