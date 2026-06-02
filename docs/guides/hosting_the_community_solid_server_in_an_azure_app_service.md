@@ -4,12 +4,12 @@ One of the challenges associated with developing applications and getting starte
 
 The [Community Solid Server](https://communitysolidserver.github.io/CommunitySolidServer/) (CSS), [developed](https://solidlab.be/community-solid-server/) by imec research groups at Ghent University, provides a good base for experimentation.
 
-The repository [solid/css-azure-app-service](https://github.com/solid/css-azure-app-service) provides:
+The repository [solid/css-azure-app-service](https://github.com/solid-contrib/css-azure-app-service) provides:
 
-1. A CSS [configuration](https://github.com/solid/css-azure-app-service/blob/main/config/config.json) that focuses on standard Solid features and provides a simple single pod hosting service (see [CSS configuration](https://github.com/CommunitySolidServer/CommunitySolidServer?tab=readme-ov-file#configure-your-server));
-1. A step by step [guide](https://github.com/solid/css-azure-app-service/blob/main/README.md) to deploying CSS to an Azure App Service;
-1. An infrastructure as code [template](https://github.com/solid/css-azure-app-service/blob/main/infrastructure/template.json) to facilitate deployment;
-1. A few [sample files](https://github.com/solid/css-azure-app-service/tree/main/data) that can be used to setup your Solid Server (an Azure blob storage is used for Solid resources persistance, so you can upload files directly from the Azure UI when you want to setup or change your server's access control and resources).
+1. A CSS [configuration](https://github.com/solid-contrib/css-azure-app-service/blob/main/config/config.json) that focuses on standard Solid features and provides a simple single pod hosting service (see [CSS configuration](https://github.com/CommunitySolidServer/CommunitySolidServer?tab=readme-ov-file#configure-your-server));
+1. A step by step [guide](https://github.com/solid-contrib/css-azure-app-service/blob/main/README.md) to deploying CSS to an Azure App Service;
+1. An infrastructure as code [template](https://github.com/solid-contrib/css-azure-app-service/blob/main/infrastructure/template.json) to facilitate deployment;
+1. A few [sample files](https://github.com/solid-contrib/css-azure-app-service/tree/main/data) that can be used to setup your Solid Server (an Azure blob storage is used for Solid resources persistance, so you can upload files directly from the Azure UI when you want to setup or change your server's access control and resources).
 
 
 ## Note
