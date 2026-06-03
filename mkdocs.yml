@@ -60,6 +60,8 @@ markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
   - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         # Need to fork the theme to make changes https://github.com/squidfunk/mkdocs-material/issues/3665#issuecomment-1060019924

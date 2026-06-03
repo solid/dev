@@ -9,3 +9,4 @@ Welcome! This site provides guides and resources to help you start building appl
 - [Demo Application using Solid + Next.js + LDO](guides/solid_nextjs_ldo_demo_application)
 - [Hosting the Community Solid Server in an Azure App Service](guides/hosting_the_community_solid_server_in_an_azure_app_service)
 - [Demo Application using Solid + Next.js + RDF/JS Wrapper](guides/solid_nextjs_wrapper_demo_application)
+- [Building native Android Solid Apps with AndroidSolidServices](guides/building_native_android_solid_apps_with_androidsolidservices)
